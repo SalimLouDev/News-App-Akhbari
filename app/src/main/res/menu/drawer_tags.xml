@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/today"
+            android:icon="@drawable/ic_today_black_24dp"
+            android:title="@string/today" />
+        <item
+            android:id="@+id/this_week"
+            android:icon="@drawable/ic_view_week_black_24dp"
+            android:title="@string/this_week" />
+        <item
+            android:id="@+id/past"
+            android:icon="@drawable/ic_content_paste_black_24dp"
+            android:title="@string/past" />
+
+        <item
+            android:id="@+id/health"
+            android:icon="@drawable/ic_local_hospital_black_24dp"
+            android:title="@string/health" />
+        <item
+            android:id="@+id/sport"
+            android:icon="@drawable/ic_directions_run_black_24dp"
+            android:title="@string/sport" />
+        <item
+            android:id="@+id/transport"
+            android:icon="@drawable/ic_directions_transit_black_24dp"
+            android:title="@string/transport" />
+        <item
+            android:id="@+id/politics"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/politics" />
+
+    </group>
+</menu>
