@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto_mono"
         android:text="@string/akhbar_i"
         android:textColor="#FFF"
         android:textSize="38sp" />
@@ -119,6 +119,7 @@
             android:textSize="14sp"
             android:layout_gravity="center"/>
         <TextView
+            android:id="@+id/signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_mono"

@@ -7,23 +7,23 @@
     android:background="#0F084B"
     android:orientation="vertical"
     android:paddingEnd="50dp"
-    android:paddingStart="50dp"
-    android:paddingBottom="25dp">
+    android:paddingStart="50dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto_mono"
         android:text="@string/akhbar_i"
         android:textColor="@android:color/white"
         android:textSize="38sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
+        android:layout_weight="70"
+        android:gravity="center"
         android:orientation="vertical">
 
 
@@ -35,26 +35,27 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:inputType="text"
+                android:fontFamily="@font/roboto_thin"
                 android:hint="@string/firstname"
-                android:backgroundTint="@android:color/white"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto_thin"/>
+                android:textColor="@android:color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:textColorHint="@android:color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="@font/roboto_thin"
                 android:hint="@string/lastname"
-                android:backgroundTint="@android:color/white"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto_thin"/>
+                android:textColor="@android:color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,33 +63,34 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:textColorHint="@android:color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/white"
+                android:fontFamily="@font/roboto_thin"
                 android:hint="@string/password"
+                android:layout_marginTop="18dp"
                 android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto_thin"/>
+                android:textColor="@android:color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:textColorHint="@android:color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/national_id"
+                android:layout_marginTop="18dp"
+                android:inputType="number"
                 android:backgroundTint="@android:color/white"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto_thin"/>
+                android:fontFamily="@font/roboto_thin"
+                android:hint="@string/national_id"
+                android:textColor="@android:color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,36 +99,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="18dp"
             android:background="#26408B"
-            android:text="@string/sign_up"
+            android:elevation="7dp"
             android:fontFamily="@font/roboto_mono"
-            android:layout_marginTop="20dp"
-            android:textColor="@android:color/white"
-            android:elevation="7dp"/>
+            android:text="@string/sign_up"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_height="0dp"
+        android:layout_weight="20"
         android:orientation="horizontal">
 
         <View
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="50"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
             android:textColor="@android:color/white"
-            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:textSize="14sp"
             android:fontFamily="@font/roboto_mono"/>
 
         <TextView
+            android:id="@+id/logIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/log_in"
+            android:layout_gravity="center"
             android:textSize="14sp"
             android:fontFamily="@font/roboto_mono"
             android:layout_marginStart="9dp"
@@ -134,7 +139,7 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="50"/>
     </LinearLayout>
 </LinearLayout>
