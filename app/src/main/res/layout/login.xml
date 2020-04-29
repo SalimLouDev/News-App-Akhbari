@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,34 +8,132 @@
     android:paddingStart="50dp"
     android:background="#0F084B">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/akhbar_i"
-        android:textSize="38sp"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/roboto_mono"
+        android:text="@string/akhbar_i"
         android:textColor="#FFF"
-        android:layout_marginTop="100dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="38sp" />
 
-    <EditText
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="70"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#FFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFF"
+                android:fontFamily="@font/roboto_thin"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFF" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
-        android:textColorHint="#FFF" />
+        android:textColorHint="#FFF">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:fontFamily="@font/roboto_thin"
+            android:layout_marginTop="18dp"
+            android:inputType="textPassword"
+            android:backgroundTint="#FFF"
+            android:textColor="#FFF"/>
 
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_me"
+                android:textColor="#FFF"
+                android:fontFamily="@font/roboto_mono"
+                android:textSize="14sp"
+                android:buttonTint="#FFF"
+                android:layout_gravity="start"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_mono"
+                android:text="@string/forgot_password"
+                android:textColor="#FFF"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="#26408B"
+            android:elevation="7dp"
+            android:fontFamily="@font/roboto_mono"
+            android:text="@string/login"
+            android:textColor="#FFF" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        android:textColorHint="#FFF"/>
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:orientation="horizontal">
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/remember_me"
-        android:textColor="#FFF"
-        android:textSize="14sp"
-        android:backgroundTint="#FFF"/>
-</LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            tools:ignore="NestedWeights" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="#FFF"
+            android:fontFamily="@font/roboto_mono"
+            android:textSize="14sp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_mono"
+            android:text="@string/sign_up"
+            android:textColor="#81B1D5"
+            android:textSize="14sp"
+            android:layout_gravity="center"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"/>
+    </LinearLayout>
+
+    </LinearLayout>
+
