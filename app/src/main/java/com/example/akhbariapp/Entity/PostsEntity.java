@@ -11,13 +11,13 @@ public class PostsEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title,Description;
-    private Blob image;
+    //private Blob image;
 
-    public PostsEntity(String title, String description, Blob image) {
+    /*public PostsEntity(String title, String description, Blob image) {
         this.title = title;
         Description = description;
-        this.image = image;
-    }
+        //this.image = image;
+    }*/
 
     public int getId() {
         return id;
@@ -43,11 +43,11 @@ public class PostsEntity {
         Description = description;
     }
 
-    public Blob getImage() {
+    /*public Blob getImage() {
         return image;
     }
 
     public void setImage(Blob image) {
         this.image = image;
-    }
+    }*/
 }

@@ -29,4 +29,16 @@
     <string name="today">Today</string>
     <string name="this_week">This Week</string>
     <string name="past">Past</string>
+    <string name="post">Post</string>
+    <string name="title_here">Title Here</string>
+    <string name="content">Content</string>
+    <string name="send">Send</string>
+    <string-array name="Cities">
+        <item>Oran</item>
+        <item>Algiers</item>
+        <item>Tiaret</item>
+        <item>Tiziwezou</item>
+        <item>Chlef</item>
+        <item>Blida</item>
+    </string-array>
 </resources>
