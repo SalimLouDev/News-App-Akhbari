@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Activities.HomeActivity"
     android:background="#0F084B"
     android:orientation="vertical"
     android:paddingEnd="50dp"
@@ -28,6 +28,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/first_name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="#fff">
@@ -44,6 +45,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/last_name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white">
@@ -61,6 +63,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_edit_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white">
@@ -78,6 +81,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nationalid_edit_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white">
@@ -96,6 +100,7 @@
 
 
         <Button
+            android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

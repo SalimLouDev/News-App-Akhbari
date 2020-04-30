@@ -29,4 +29,9 @@
     <string name="today">Today</string>
     <string name="this_week">This Week</string>
     <string name="past">Past</string>
+    <string name="posttitle">PostTitle</string>
+    <string name="read_more"><![CDATA[Read more >]]></string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="education">Education</string>
 </resources>
