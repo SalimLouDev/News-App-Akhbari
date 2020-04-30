@@ -32,5 +32,10 @@
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/politics" />
 
+        <item
+            android:id="@+id/education"
+            android:title="@string/education"
+            android:icon="@drawable/education_icon"/>
+
     </group>
 </menu>
