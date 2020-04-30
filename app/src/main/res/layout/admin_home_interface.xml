@@ -24,14 +24,6 @@
             android:layout_below="@id/toolbar"
             android:background="@drawable/shadow_for_toolbar" />
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            android:layout_above="@id/bottom_nav"
-            android:background="#0F084B"/>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="7dp"
@@ -46,7 +38,7 @@
             android:background="#0F084B"
             app:itemIconTint="#FFF"
             app:itemTextColor="#FFF"
-            app:menu="@menu/bottom_navigation" />
+            app:menu="@menu/admin_bottom_navigation" />
 
 
     </RelativeLayout>
@@ -58,10 +50,10 @@
         android:layout_below="@+id/toolbar"
         android:layout_gravity="start"
         android:background="@color/colorPrimary"
-        app:itemIconTint="#FFF"
-        app:headerLayout="@layout/header_layout"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:menu="@menu/drawer_tags"/>
+        app:headerLayout="@layout/header_layout"
+        app:itemIconTint="#FFF"
+        app:menu="@menu/drawer_tags" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

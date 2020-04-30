@@ -11,13 +11,7 @@ public class EntityUser {
     private String FirstName,LastName,Name,City;
     private int NationalID;
 
-    public EntityUser(String FirstName, String LastName, String Name, String City, int NationalID) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Name = Name;
-        this.City = City;
-        this.NationalID = NationalID;
-    }
+
 
     public int getId() {
         return id;
