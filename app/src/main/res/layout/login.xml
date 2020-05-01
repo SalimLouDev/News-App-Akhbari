@@ -27,7 +27,7 @@
         android:gravity="center">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_edit_text_sign_in"
+            android:id="@+id/nat_edit_text_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="#FFF">
@@ -37,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFF"
                 android:fontFamily="@font/roboto_thin"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
+                android:hint="@string/national_id"
+                android:inputType="number"
                 android:textColor="#FFF" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,10 +61,40 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/admin_code_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#FFF"
+        android:visibility="invisible">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:backgroundTint="#fff"
+            android:hint="@string/admin_code"
+            android:fontFamily="@font/roboto_thin"
+            android:inputType="number"
+            android:textColor="#fff" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/is_admin_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/you_are_an_admin"
+            android:textColor="@android:color/white"
+            android:buttonTint="@android:color/white"
+            android:fontFamily="@font/roboto_mono"
+            android:layout_gravity="start"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal">
 
             <CheckBox
@@ -74,7 +104,7 @@
                 android:text="@string/remember_me"
                 android:textColor="#FFF"
                 android:fontFamily="@font/roboto_mono"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:buttonTint="#FFF"
                 android:layout_gravity="start"/>
 
@@ -90,7 +120,7 @@
                 android:fontFamily="@font/roboto_mono"
                 android:text="@string/forgot_password"
                 android:textColor="#FFF"
-                android:textSize="14sp"/>
+                android:textSize="12sp"/>
 
         </LinearLayout>
 
