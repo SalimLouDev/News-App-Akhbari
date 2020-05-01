@@ -16,7 +16,7 @@
     <string name="already_have_an_account">Already have an account ?</string>
     <string name="log_in">Log in</string>
     <string name="home">Home</string>
-    <string name="message">Message</string>
+    <string name="message">Inbox</string>
     <string name="settings">Settings</string>
     <string name="about_us">About Us</string>
     <string name="contact_us">Contact Us</string>
@@ -29,5 +29,22 @@
     <string name="today">Today</string>
     <string name="this_week">This Week</string>
     <string name="past">Past</string>
+    <string name="posttitle">Manhattan Bridge</string>
+    <string name="read_more"><![CDATA[Read more >]]></string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="education">Education</string>
+    <string name="post">Post</string>
+    <string name="title_here">Title Here</string>
+    <string name="content">Content</string>
+    <string name="send">Send</string>
+    <string-array name="Cities">
+        <item>Oran</item>
+        <item>Algiers</item>
+        <item>Tiaret</item>
+        <item>Tiziwezou</item>
+        <item>Chlef</item>
+        <item>Blida</item>
+    </string-array>
 
 </resources>

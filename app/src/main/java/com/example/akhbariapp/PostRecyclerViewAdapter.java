@@ -1,5 +1,6 @@
 package com.example.akhbariapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,12 +34,13 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
         return new ViewHolder(root);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
          holder.post_title.setText(posts.get(position).getTitle());
          holder.read_more.setText(posts.get(position).getDescription());
-         holder.post_date.setText("Date");
-         holder.post_time.setText("Time");
+         holder.post_date.setText("25-04-2020");
+         holder.post_time.setText("11:34");
 
     }
 

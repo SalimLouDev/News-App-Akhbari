@@ -8,7 +8,13 @@ public class PostsEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+    private String title,description;
 
+    public PostsEntity(String title, String description) {
+
+        this.title=title;
+        this.description=description;
+    }
 
     public int getId() {
         return id;

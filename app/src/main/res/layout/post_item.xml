@@ -11,7 +11,9 @@
         android:layout_height="310dp"
         android:elevation="10dp"
         android:layout_centerInParent="true"
-        app:cardCornerRadius="10dp">
+        android:clickable="true"
+        app:cardCornerRadius="10dp"
+        android:focusable="true">
 
 
         <RelativeLayout
@@ -23,7 +25,7 @@
                 android:id="@+id/post_image"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
-                android:background="@drawable/ic_launcher_background" />
+                android:background="@drawable/city" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -40,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/posttitle"
                     android:textColor="@android:color/white"
+                    android:fontFamily="@font/roboto_mono"
                     android:textSize="16sp" />
 
                 <TextView
@@ -49,6 +52,7 @@
                     android:text="@string/read_more"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
+                    android:fontFamily="@font/roboto_thin"
                     android:layout_below="@+id/post_title"
                     android:layout_marginTop="10dp"/>
 
@@ -59,22 +63,25 @@
                     android:layout_below="@+id/post_read_more">
 
                     <TextView
-                        android:id="@+id/post_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/time"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-
-                    <TextView
                         android:id="@+id/post_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="9dp"
                         android:layout_toEndOf="@+id/post_time"
                         android:text="@string/date"
+                        android:fontFamily="@font/roboto_mono"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/post_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time"
+                        android:fontFamily="@font/roboto_mono"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+
 
                 </RelativeLayout>
 
