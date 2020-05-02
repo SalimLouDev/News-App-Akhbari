@@ -37,10 +37,12 @@
     <string name="post">Post</string>
     <string name="title_here">Title Here</string>
     <string name="content">Content</string>
+    <string name="to">To</string>
+    <string name="subject">Subject</string>
+    <string name="compose_message">Compose message</string>
+    <string name="back">back</string>
     <string name="send">Send</string>
-    <string name="admin_code">Admin Code</string>
-    <string name="you_are_an_admin">You are an admin ?</string>
-    <string name="add_your_city">Add your city</string>
+
     <string-array name="Cities">
         <item>Oran</item>
         <item>Algiers</item>

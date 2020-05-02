@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.Activities.HomeActivity;
 import com.example.akhbariapp.Entity.PostsEntity;
 import com.example.akhbariapp.PostRecyclerViewAdapter;
@@ -26,7 +27,8 @@ public class Today extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.posts_fragment,container,false);
-        HomeActivity homeActivity = (HomeActivity) getActivity();
+        //HomeActivity homeActivity = (HomeActivity) getActivity();
+        AdminHomeActivity homeActivity = (AdminHomeActivity) getActivity();
         Objects.requireNonNull(Objects.requireNonNull(homeActivity).getSupportActionBar()).setTitle(getString(R.string.today));
 
         ArrayList<PostsEntity>posts = new ArrayList<>();
