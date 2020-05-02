@@ -42,7 +42,7 @@
     <string name="compose_message">Compose message</string>
     <string name="back">back</string>
     <string name="send">Send</string>
-    <string name="addi_mage">addi mage</string>
+
     <string-array name="Cities">
         <item>Oran</item>
         <item>Algiers</item>

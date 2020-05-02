@@ -7,12 +7,13 @@ import androidx.room.PrimaryKey;
 public class NationalCardsEntity {
     @PrimaryKey(autoGenerate = true)
     int id;
-    String first_name,last_name,residence;
-
-    public NationalCardsEntity(String first_name, String last_name, String residence) {
+    private String first_name,last_name,residence;
+    int national_id;
+    public NationalCardsEntity(String first_name, String last_name, String residence ,int national_id) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.residence = residence;
+        this.national_id = national_id;
     }
 
     public int getId() {
@@ -45,5 +46,13 @@ public class NationalCardsEntity {
 
     public void setResidence(String residence) {
         this.residence = residence;
+    }
+
+    public int getNational_id() {
+        return national_id;
+    }
+
+    public void setNational_id(int national_id) {
+        this.national_id = national_id;
     }
 }
