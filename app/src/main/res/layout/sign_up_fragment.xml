@@ -99,16 +99,23 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/white">
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/user_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/white"
             android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_thin"
             android:hint="@string/add_your_city"
             android:textColorHint="@android:color/white"
             android:textColor="@android:color/white"
-            android:fontFamily="@font/roboto_thin" />
+            android:completionThreshold="1"
+            android:inputType="textAutoComplete"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
             android:id="@+id/is_admin_sign_up"
@@ -135,6 +142,7 @@
                 android:inputType="number"
                 android:backgroundTint="@android:color/white"
                 android:fontFamily="@font/roboto_thin"
+                android:textColor="#FFF"
                 android:hint="@string/admin_code"
                 android:textColorHint="@android:color/white"
                 android:clickable="false"/>

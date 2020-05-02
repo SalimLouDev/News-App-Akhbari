@@ -7,5 +7,5 @@
     <item
         android:id="@+id/nav_msg"
         android:icon="@drawable/ic_message_black_24dp"
-        android:title="@string/message"/>
+        android:title="@string/Inbox"/>
 </menu>

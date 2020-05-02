@@ -75,7 +75,7 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/round_button"
         android:elevation="7dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/roboto_mono"
         android:text="@string/send"
         android:textColor="@color/colorPrimary" />

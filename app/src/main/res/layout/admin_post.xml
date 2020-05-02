@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +7,11 @@
     android:orientation="vertical">
 
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="80"
+        android:background="@color/colorPrimary">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,22 +26,24 @@
                 android:layout_height="276dp">
 
                 <ImageView
-                    android:id="@+id/post_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:padding="5dp"
-                    android:background="@drawable/ic_add_a_photo_black_24dp"
-                    android:contentDescription="@string/addi_mage" />
-
-                <ImageView
                     android:id="@+id/post_image_center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
                     android:padding="5dp"
-                    android:background="@drawable/ic_image_black_24dp" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/admin_post_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/ic_add_a_photo_black_24dp"
+                    android:contentDescription="@string/addi_mage"
+                    android:padding="5dp" />
             </RelativeLayout>
 
             <View
@@ -69,19 +74,34 @@
                         android:textColor="#FFF" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/city_spinner"
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="40"
-                    android:background="@android:color/transparent"
-                    app:ms_arrowColor="#FFF"
-                    app:ms_floatingLabelColor="@color/colorAccent"
-                    app:ms_floatingLabelText="City"
-                    app:ms_hint="City"
-                    app:ms_hintColor="#FFF" />
+                    android:textColorHint="#FFF">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/city"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:completionThreshold="1"
+                        android:fontFamily="@font/roboto_thin"
+                        android:hint="@string/city"
+                        android:inputType="textAutoComplete"
+                        android:textColor="#FFF"
+                        android:textColorHint="#FFF" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
+
 
             <View
                 android:layout_width="match_parent"
@@ -99,30 +119,33 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:backgroundTint="#000"
                     android:fontFamily="@font/roboto_thin"
                     android:gravity="top|left"
                     android:hint="@string/content"
                     android:inputType="textMultiLine"
-                    android:lines="10"
-                    android:maxLines="20"
-                    android:background="@android:color/transparent"
-                    android:minLines="8"
+                    android:lines="200"
+                    android:maxLines="200"
+                    android:minLines="20"
                     android:scrollbarThumbVertical="@drawable/custom_scroll_style"
                     android:scrollbars="vertical"
                     android:textColor="#FFF"
                     tools:ignore="RtlHardcoded" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </LinearLayout>
+
+    </ScrollView>
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginTop="18dp"
         android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/round_button"
         android:elevation="7dp"
         android:fontFamily="@font/roboto_mono"

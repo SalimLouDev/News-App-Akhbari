@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +25,7 @@ import java.util.Objects;
 
 public class SignUp extends Fragment {
 
+    private static final String[] cities = new String []{"Oran","Algiers","Anaba","Tizi","Tiaret","Chlef","Blida"};
     private TextInputLayout first_name,last_name,password,national_id,admin_code;
     private AutoCompleteTextView city;
     private CheckBox admin_code_checkbox;
@@ -53,6 +55,11 @@ public class SignUp extends Fragment {
         userViewModel = new UserViewModel(Objects.requireNonNull(getActivity()).getApplication());
         Button sign_up = root.findViewById(R.id.sign_up_button);
         sign_up.setOnClickListener(v-> add_user());
+
+        ArrayAdapter adapter;
+        adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,cities);
+        city.setAdapter(adapter);
+
 
         return root;
     }

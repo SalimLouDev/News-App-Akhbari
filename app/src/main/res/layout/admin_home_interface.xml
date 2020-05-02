@@ -27,7 +27,7 @@
             android:id="@+id/admin_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/bottom_nav"
+            android:layout_above="@id/admin_bottom_nav"
             android:layout_below="@+id/toolbar"
             android:background="#0F084B" />
         <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -5,10 +5,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.example.akhbariapp.Fragments.AdminPost;
 import com.example.akhbariapp.Fragments.AdminPostMessage;
 import com.example.akhbariapp.Fragments.Education;
+import com.example.akhbariapp.Fragments.Inbox;
 import com.example.akhbariapp.Fragments.Past;
 import com.example.akhbariapp.Fragments.Politics;
 import com.example.akhbariapp.Fragments.ThisWeek;
@@ -30,7 +34,6 @@ import com.google.android.material.navigation.NavigationView;
 public class AdminHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +41,11 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.admin_home_interface);
 
 
-        FloatingActionButton fab = findViewById(R.id.floating_action_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit();
 
-            }
-        });
+
+
+        FloatingActionButton fab = findViewById(R.id.floating_action_button);
+        fab.setOnClickListener(view -> getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit());
 
 
 
@@ -57,7 +57,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.admin_nav_view);
+        NavigationView navigationView = findViewById(R.id.admin_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
@@ -67,6 +67,9 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.admin_bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
+
+
     }
 
 
@@ -83,8 +86,12 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
                 case R.id.add_post:
                     fragment = new AdminPost();
                     break;
+                case R.id.nav_msg:
+                    fragment = new Inbox();
+                    break;
 
             }
+            assert fragment != null;
             getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,fragment).commit();
             return true;
         }
