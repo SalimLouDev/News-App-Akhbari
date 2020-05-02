@@ -22,10 +22,16 @@ public class AdminPostMessage extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.admin_massage,container,false);
-        //HomeActivity homeActivity = (HomeActivity) getActivity();
-        AdminHomeActivity homeActivity = (AdminHomeActivity) getActivity();
-        Objects.requireNonNull(Objects.requireNonNull(homeActivity).getSupportActionBar()).setTitle(getString(R.string.message));
 
+        String user_state = Objects.requireNonNull(getActivity()).getIntent().getStringExtra("user");
+        if(Objects.equals(user_state, "normal_user")){
+            HomeActivity homeActivity = (HomeActivity) getActivity();
+            Objects.requireNonNull(Objects.requireNonNull(homeActivity).getSupportActionBar()).setTitle(getString(R.string.message));
+        }
+        else if(Objects.equals(user_state, "admin")){
+            AdminHomeActivity adminHomeActivity = (AdminHomeActivity) getActivity();
+            Objects.requireNonNull(Objects.requireNonNull(adminHomeActivity).getSupportActionBar()).setTitle(getString(R.string.message));
+        }
 
         return root;
     }

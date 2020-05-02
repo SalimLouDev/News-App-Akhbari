@@ -9,14 +9,15 @@ public class EntityUser {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String FirstName,LastName,City,password;
-    private int nationalID;
+    private int nationalID,admin_code;
 
-    public EntityUser(String FirstName, String LastName, String password, String City, int nationalID) {
+    public EntityUser(String FirstName, String LastName, String password, String City, int nationalID,int admin_code) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.password = password;
         this.City = City;
         this.nationalID = nationalID;
+        this.admin_code = admin_code;
     }
 
     public int getId() {
@@ -65,5 +66,13 @@ public class EntityUser {
 
     public void setNationalID(int nationalID) {
         nationalID = nationalID;
+    }
+
+    public int getAdmin_code() {
+        return admin_code;
+    }
+
+    public void setAdmin_code(int admin_code) {
+        this.admin_code = admin_code;
     }
 }

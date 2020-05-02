@@ -108,7 +108,8 @@
             android:hint="@string/add_your_city"
             android:textColorHint="@android:color/white"
             android:textColor="@android:color/white"
-            android:fontFamily="@font/roboto_thin" />
+            android:fontFamily="@font/roboto_thin"
+            android:completionThreshold="1"/>
 
         <CheckBox
             android:id="@+id/is_admin_sign_up"

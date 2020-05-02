@@ -11,7 +11,7 @@ import com.example.akhbariapp.Entity.EntityUser;
 import com.example.akhbariapp.Entity.NationalCardsEntity;
 import com.example.akhbariapp.Entity.PostsEntity;
 
-@Database(entities = {EntityUser.class, NationalCardsEntity.class, PostsEntity.class},version = 2)
+@Database(entities = {EntityUser.class, NationalCardsEntity.class, PostsEntity.class},version = 3)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;

@@ -27,6 +27,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 public class AdminHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
@@ -85,7 +87,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
                     break;
 
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, Objects.requireNonNull(fragment)).commit();
             return true;
         }
     };

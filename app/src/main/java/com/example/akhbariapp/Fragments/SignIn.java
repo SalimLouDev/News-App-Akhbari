@@ -1,13 +1,13 @@
 package com.example.akhbariapp.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,15 +27,32 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SignIn extends Fragment {
 
     private TextInputLayout national_id,password,admin_code;
     private CheckBox admin_code_checkbox;
     private UserViewModel userViewModel;
+    private SharedPreferences admin;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.login,container,false);
+        admin = Objects.requireNonNull(getActivity()).getSharedPreferences("Admin",MODE_PRIVATE);
+
+        if(admin.getInt("admin_code",0)!=0 && !admin.getString("first_name","no").equals("no")){
+            Intent intent = new Intent(getActivity(), AdminHomeActivity.class);
+            intent.putExtra("user","admin");
+            startActivity(intent);
+            Objects.requireNonNull(getActivity()).finish();
+
+        }else if (!admin.getString("first_name","no").equals("no") && admin.getInt("admin_code",0)==0){
+            Intent intent = new Intent(getActivity(), HomeActivity.class);
+            intent.putExtra("user","normal_user");
+            startActivity(intent);
+            Objects.requireNonNull(getActivity()).finish();
+        }
 
         Button sign_in = root.findViewById(R.id.login_button);
         TextView sign_up_text = root.findViewById(R.id.signUp);
@@ -46,7 +63,6 @@ public class SignIn extends Fragment {
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
-            startActivity(new Intent(getActivity(), AdminHomeActivity.class));
         });
         sign_up_text.setOnClickListener(v->{
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
@@ -69,6 +85,7 @@ public class SignIn extends Fragment {
                 admin_code.setVisibility(View.INVISIBLE);
         });
         userViewModel = new UserViewModel(Objects.requireNonNull(getActivity()).getApplication());
+
         return root;
     }
 
@@ -86,11 +103,31 @@ public class SignIn extends Fragment {
 
            EntityUser user = userViewModel.find(_password,nat_id);
 
-           if(user!=null){
-               startActivity(new Intent(getActivity(), HomeActivity.class));
-               Objects.requireNonNull(getActivity()).finish();
+           if(admin_code_checkbox.isChecked()){
+               int _admin_code = Integer.parseInt(Objects.requireNonNull(admin_code.getEditText()).getText().toString().trim());
+               if(user!=null && _admin_code==admin.getInt("admin_code",0)){
+                   if(user.getAdmin_code()==0){
+                       Toast.makeText(getContext(),"You are not admin",Toast.LENGTH_SHORT).show();
+                   }else {
+                       Intent intent = new Intent(getActivity(), AdminHomeActivity.class);
+                       intent.putExtra("user","admin");
+                       startActivity(intent);
+                       Objects.requireNonNull(getActivity()).finish();
+                   }
+               }else{
+
+                   Toast.makeText(getContext(),"The admin code is wrong",Toast.LENGTH_SHORT).show();
+               }
+
            }else {
-               Toast.makeText(getContext(),"Your password or national_id is false",Toast.LENGTH_SHORT).show();
+               if(user!=null){
+                   Intent intent = new Intent(getActivity(), HomeActivity.class);
+                   intent.putExtra("user","normal_user");
+                   startActivity(intent);
+                   Objects.requireNonNull(getActivity()).finish();
+               }else {
+                   Toast.makeText(getContext(),"Your password or national_id is false",Toast.LENGTH_SHORT).show();
+               }
            }
        }
     }
