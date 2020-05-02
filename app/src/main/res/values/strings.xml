@@ -37,7 +37,12 @@
     <string name="post">Post</string>
     <string name="title_here">Title Here</string>
     <string name="content">Content</string>
+    <string name="to">To</string>
+    <string name="subject">Subject</string>
+    <string name="compose_message">Compose message</string>
+    <string name="back">back</string>
     <string name="send">Send</string>
+    <string name="addi_mage">addi mage</string>
     <string-array name="Cities">
         <item>Oran</item>
         <item>Algiers</item>

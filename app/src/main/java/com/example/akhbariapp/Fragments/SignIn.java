@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.Activities.HomeActivity;
 import com.example.akhbariapp.R;
 
@@ -29,7 +30,7 @@ public class SignIn extends Fragment {
         Button sign_in = root.findViewById(R.id.login_button);
         TextView sign_up_text = root.findViewById(R.id.signUp);
         sign_in.setOnClickListener(v->{
-            startActivity(new Intent(getActivity(), HomeActivity.class));
+            startActivity(new Intent(getActivity(), AdminHomeActivity.class));
         });
 
         sign_up_text.setOnClickListener(v->{

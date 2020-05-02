@@ -21,6 +21,7 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".Activities.AdminHomeActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
