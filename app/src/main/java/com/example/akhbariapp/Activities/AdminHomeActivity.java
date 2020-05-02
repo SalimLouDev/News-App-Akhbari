@@ -74,27 +74,24 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
 
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment=null;
-            switch (item.getItemId()){
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
+        Fragment fragment=null;
+        switch (item.getItemId()){
 
-                case R.id.nav_home:
-                    fragment = new Today();
-                    break;
-                case R.id.add_post:
-                    fragment = new AdminPost();
-                    break;
-                case R.id.nav_msg:
-                    fragment = new Inbox();
-                    break;
+            case R.id.nav_home:
+                fragment = new Today();
+                break;
+            case R.id.add_post:
+                fragment = new AdminPost();
+                break;
+            case R.id.nav_msg:
+                fragment = new Inbox();
+                break;
 
-            }
-            assert fragment != null;
-            getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,fragment).commit();
-            return true;
         }
+        assert fragment != null;
+        getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,fragment).commit();
+        return true;
     };
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
