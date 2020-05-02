@@ -8,10 +8,7 @@
     android:orientation="vertical">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,7 +91,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textColorHint="#FFF">
 
@@ -107,28 +104,28 @@
                     android:gravity="top|left"
                     android:hint="@string/content"
                     android:inputType="textMultiLine"
-                    android:lines="50"
-                    android:maxLines="100"
+                    android:lines="10"
+                    android:maxLines="20"
                     android:background="@android:color/transparent"
-                    android:minLines="20"
+                    android:minLines="8"
                     android:scrollbarThumbVertical="@drawable/custom_scroll_style"
                     android:scrollbars="vertical"
                     android:textColor="#FFF"
                     tools:ignore="RtlHardcoded" />
             </com.google.android.material.textfield.TextInputLayout>
-            <Button
-                android:id="@+id/login_button"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/round_button"
-                android:elevation="7dp"
-                android:fontFamily="@font/roboto_mono"
-                android:text="@string/post"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginBottom="70dp"/>
+
+
         </LinearLayout>
 
-    </ScrollView>
-
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/round_button"
+        android:elevation="7dp"
+        android:fontFamily="@font/roboto_mono"
+        android:text="@string/post"
+        android:textColor="@color/colorPrimary" />
 </LinearLayout>

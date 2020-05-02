@@ -40,7 +40,14 @@ public class SignIn extends Fragment {
         Button sign_in = root.findViewById(R.id.login_button);
         TextView sign_up_text = root.findViewById(R.id.signUp);
 
-
+        sign_in.setOnClickListener(v->{
+            try {
+                login();
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            startActivity(new Intent(getActivity(), AdminHomeActivity.class));
+        });
         sign_up_text.setOnClickListener(v->{
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = Objects.requireNonNull(fragmentManager).beginTransaction();
