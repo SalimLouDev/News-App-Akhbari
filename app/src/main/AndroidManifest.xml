@@ -22,6 +22,7 @@
 
         </activity>
         <activity android:name=".Activities.AdminHomeActivity" />
+        <activity android:name=".Activities.ContactUs" />
 
         <meta-data
             android:name="preloaded_fonts"

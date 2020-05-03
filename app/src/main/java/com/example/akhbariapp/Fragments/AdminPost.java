@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
 
@@ -31,7 +33,12 @@ public class AdminPost extends Fragment {
     private static final String[] cities = new String []{"Oran","Algiers","Anaba","Tizi","Tiaret","Chlef","Blida"};
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
+    private Animation animation;
 
+
+    public AdminPost(Animation animation){
+        this.animation=animation;
+    }
 
     @Nullable
     @Override
@@ -45,6 +52,8 @@ public class AdminPost extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, cities);
         city.setAdapter(adapter);
 
+        FloatingActionButton fab = root.findViewById(R.id.floating_action_button_for_send_post);
+        fab.startAnimation(animation);
         ImageView image_button    = root.findViewById(R.id.admin_post_image);
 
         //Button click listener for picking image

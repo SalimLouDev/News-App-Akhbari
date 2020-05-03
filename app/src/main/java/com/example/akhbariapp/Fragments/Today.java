@@ -45,7 +45,7 @@ public class Today extends Fragment {
         posts.add(new PostsEntity("Manhattan Bridge","The Manhattan Bridge is a suspension bridge that ..."));
 
         RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
-        FloatingActionButton floatingActionButton = Objects.requireNonNull(requireActivity()).findViewById(R.id.floating_action_button);
+        /*FloatingActionButton floatingActionButton = Objects.requireNonNull(requireActivity()).findViewById(R.id.floating_action_button_for_mail_interface);
 
         if (Objects.requireNonNull(user_state).equals("admin")){
 
@@ -66,7 +66,7 @@ public class Today extends Fragment {
                     }
                 }
             });
-        }
+        }*/
 
         post_list.setLayoutManager(new LinearLayoutManager(getContext()));
         PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext(),posts);

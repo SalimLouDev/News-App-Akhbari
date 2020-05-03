@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,29 +30,10 @@
             android:layout_height="match_parent"
             android:layout_above="@id/admin_bottom_nav"
             android:layout_below="@+id/toolbar"
-            android:background="#0F084B"/>
+            android:background="#0F084B">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fab_container"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:elevation="7dp"
-            android:layout_marginBottom="50dp"
-            tools:ignore="RelativeOverlap">
+        </FrameLayout>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floating_action_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:elevation="7dp"
-                android:layout_gravity="end"
-                android:layout_margin="16dp"
-                android:backgroundTint="#FFF"
-                app:srcCompat="@drawable/ic_mail_add"/>
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="7dp"

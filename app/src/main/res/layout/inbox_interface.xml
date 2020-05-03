@@ -2,7 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorPrimary">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/message_recycle_view"
+        android:padding="4dp"
+        android:background="@color/colorPrimary"
+        android:scrollbars="vertical"/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab_container"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:elevation="7dp"
+        tools:ignore="RelativeOverlap">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button_for_mail_interface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:elevation="7dp"
+            android:layout_gravity="end"
+            android:layout_margin="16dp"
+            android:backgroundTint="#FFF"
+            app:srcCompat="@drawable/ic_message"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
 
 </LinearLayout>

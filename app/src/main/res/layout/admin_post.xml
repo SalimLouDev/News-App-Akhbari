@@ -145,16 +145,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/fab_container"
         android:elevation="7dp"
+        android:layout_gravity="end"
         android:layout_marginBottom="16dp"
         tools:ignore="RelativeOverlap">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:id="@+id/floating_action_button_for_send_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:elevation="7dp"
             android:layout_gravity="end"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="#FFF"
             app:srcCompat="@drawable/ic_post_add_white_24dp"/>
 

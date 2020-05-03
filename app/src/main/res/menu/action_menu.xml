@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/settings"
-        android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/search"
+        android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.widget.SearchView" />
-
 
     <item android:id="@+id/about_us"
         android:title="@string/about_us"

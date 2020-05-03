@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/roboto_mono"
+        android:text="CONTACT US"
+        android:textColor="@android:color/white"
+        android:textSize="38sp"
+        tools:ignore="HardcodedText" />
 
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_mono"
+        android:text="@string/coronavirus_health_helpline"
+        android:textColor="#FFF"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_thin"
+        android:text="@string/ministry_of_health"
+        android:textColor="#FFF"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_mono"
+        android:text="@string/helpline_for_mental_health"
+        android:textColor="#FFF"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_thin"
+        android:text="@string/_04_5192519"
+        android:textColor="#FFF"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:fontFamily="@font/roboto_mono"
+        android:text="@string/technical_helping_for_distant_n_learning"
+        android:textColor="#FFF"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_thin"
+        android:text="Ministry of Education at 67017000"
+        android:textColor="#FFF"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

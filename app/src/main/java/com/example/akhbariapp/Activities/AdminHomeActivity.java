@@ -1,9 +1,14 @@
 package com.example.akhbariapp.Activities;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,7 +19,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.akhbariapp.Fragments.AdminPost;
-import com.example.akhbariapp.Fragments.AdminPostMessage;
 import com.example.akhbariapp.Fragments.Education;
 import com.example.akhbariapp.Fragments.Inbox;
 import com.example.akhbariapp.Fragments.Past;
@@ -24,25 +28,19 @@ import com.example.akhbariapp.Fragments.Today;
 import com.example.akhbariapp.Fragments.Transport;
 import com.example.akhbariapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class AdminHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_home_interface);
-
-
-
-
-
-        FloatingActionButton fab = findViewById(R.id.floating_action_button);
-        fab.setOnClickListener(view -> getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit());
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -68,20 +66,36 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+
+        if (id==R.id.contact_us){
+
+            Intent intent = new Intent(AdminHomeActivity.this,ContactUs.class);
+            startActivity(intent);
+            return false;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
         Fragment fragment=null;
+        Animation animation;
         switch (item.getItemId()){
 
             case R.id.nav_home:
                 fragment = new Today();
                 break;
             case R.id.add_post:
-                fragment = new AdminPost();
+                animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
+                fragment = new AdminPost(animation);
                 break;
             case R.id.nav_msg:
-                fragment = new Inbox();
+                animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
+                fragment = new Inbox(animation);
                 break;
 
         }
