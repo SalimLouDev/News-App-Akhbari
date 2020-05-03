@@ -25,4 +25,8 @@ public class UserViewModel extends AndroidViewModel {
     public EntityUser find(String pass,String nat_id) throws ExecutionException, InterruptedException {
         return userRepository.find(pass,nat_id);
     }
+
+    public EntityUser check(String f,String l,String nat) throws ExecutionException, InterruptedException {
+        return userRepository.check(f,l,nat);
+    }
 }

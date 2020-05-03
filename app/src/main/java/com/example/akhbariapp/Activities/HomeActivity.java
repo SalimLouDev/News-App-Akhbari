@@ -8,6 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,14 +24,20 @@ import com.example.akhbariapp.Fragments.Transport;
 import com.example.akhbariapp.R;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
-
+    private SharedPreferences admin;
+    private SharedPreferences.Editor admin_editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_interface);
+
+        admin = getSharedPreferences("Admin",MODE_PRIVATE);
+        admin_editor = admin.edit();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -80,6 +88,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.education:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Education()).commit();
                 break;
+
+            case R.id.log_out:
+                admin_editor.putString("access","no");
+                admin_editor.apply();
+                Intent intent = new Intent(this, SignUpSignInActivity.class);
+                startActivity(intent);
+                finish();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -91,6 +107,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            admin_editor.putString("access","yes");
+            admin_editor.apply();
         }
     }
 }

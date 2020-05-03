@@ -1,5 +1,7 @@
 package com.example.akhbariapp.Activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,15 +32,14 @@ import com.google.android.material.navigation.NavigationView;
 public class AdminHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
-
+    private SharedPreferences admin;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_home_interface);
 
-
-
-
+        admin = getSharedPreferences("Admin",MODE_PRIVATE);
 
         FloatingActionButton fab = findViewById(R.id.floating_action_button);
         fab.setOnClickListener(view -> getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit());
@@ -121,8 +122,30 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
             case R.id.education:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Education()).commit();
                 break;
+
+            case R.id.log_out:
+                admin = getSharedPreferences("Admin",MODE_PRIVATE);
+                editor = admin.edit();
+                editor.putString("access","no");
+                editor.apply();
+                Intent intent = new Intent(this, SignUpSignInActivity.class);
+                startActivity(intent);
+                finish();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+            editor = admin.edit();
+            editor.putString("access","yes");
+            editor.apply();
+        }
     }
 }

@@ -48,6 +48,7 @@
     <string name="back">back</string>
     <string name="send">Send</string>
     <string name="city">City</string>
+    <string name="log_out">Log out</string>
 
     <string-array name="Cities">
         <item>Oran</item>
