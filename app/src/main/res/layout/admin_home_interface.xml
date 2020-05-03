@@ -50,7 +50,7 @@
                 android:layout_gravity="end"
                 android:layout_margin="16dp"
                 android:backgroundTint="#FFF"
-                app:srcCompat="@drawable/ic_add_black_24dp"/>
+                app:srcCompat="@drawable/ic_mail_add"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <View

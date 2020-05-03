@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
@@ -138,17 +139,24 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/round_button"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab_container"
         android:elevation="7dp"
-        android:fontFamily="@font/roboto_mono"
-        android:text="@string/post"
-        android:textColor="@color/colorPrimary" />
+        android:layout_marginBottom="16dp"
+        tools:ignore="RelativeOverlap">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:elevation="7dp"
+            android:layout_gravity="end"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#FFF"
+            app:srcCompat="@drawable/ic_post_add_white_24dp"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>
