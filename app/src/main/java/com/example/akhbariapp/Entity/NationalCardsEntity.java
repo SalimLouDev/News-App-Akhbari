@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "NationalCards")
 public class NationalCardsEntity {
     @PrimaryKey(autoGenerate = true)
-    int id;
+    private int id;
     private String first_name,last_name,residence;
-    int national_id;
+    private int national_id;
     public NationalCardsEntity(String first_name, String last_name, String residence ,int national_id) {
         this.first_name = first_name;
         this.last_name = last_name;

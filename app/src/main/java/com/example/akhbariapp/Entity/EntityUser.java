@@ -8,16 +8,17 @@ public class EntityUser {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String FirstName,LastName,City,password;
+    private String FirstName,LastName,City,password,user_type;
     private int nationalID,admin_code;
 
-    public EntityUser(String FirstName, String LastName, String password, String City, int nationalID,int admin_code) {
+    public EntityUser(String FirstName, String LastName, String password, String City, int nationalID,int admin_code,String user_type) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.password = password;
         this.City = City;
         this.nationalID = nationalID;
         this.admin_code = admin_code;
+        this.user_type = user_type;
     }
 
     public int getId() {
@@ -74,5 +75,13 @@ public class EntityUser {
 
     public void setAdmin_code(int admin_code) {
         this.admin_code = admin_code;
+    }
+
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
     }
 }

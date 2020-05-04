@@ -27,6 +27,10 @@ public class UserRepository {
         return new FindAsyncTask(userDao).execute(pass,nat_id).get();
     }
 
+    public EntityUser check(String f,String l,String nat) throws ExecutionException, InterruptedException {
+        return new CheckAsyncTask(userDao).execute(f,l,nat).get();
+    }
+
     static class InsertAsyncTask extends AsyncTask<EntityUser,Void,Void>{
 
         private UserDao userDao;
@@ -52,6 +56,20 @@ public class UserRepository {
         @Override
         protected EntityUser doInBackground(String... strings) {
             return userDao.find(strings[0],strings[1]);
+        }
+    }
+
+    static class CheckAsyncTask extends AsyncTask<String,Void,EntityUser>{
+
+        private UserDao userDao;
+
+        public CheckAsyncTask(UserDao userDao) {
+            this.userDao = userDao;
+        }
+
+        @Override
+        protected EntityUser doInBackground(String... strings) {
+            return userDao.check(strings[0],strings[1],strings[2]);
         }
     }
 }
