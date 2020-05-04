@@ -20,15 +20,16 @@ import androidx.fragment.app.Fragment;
 import com.example.akhbariapp.Fragments.AdminPost;
 import com.example.akhbariapp.Fragments.AdminPostMessage;
 import com.example.akhbariapp.Fragments.Education;
+import com.example.akhbariapp.Fragments.Health;
 import com.example.akhbariapp.Fragments.Inbox;
 import com.example.akhbariapp.Fragments.Past;
 import com.example.akhbariapp.Fragments.Politics;
+import com.example.akhbariapp.Fragments.Sport;
 import com.example.akhbariapp.Fragments.ThisWeek;
 import com.example.akhbariapp.Fragments.Today;
 import com.example.akhbariapp.Fragments.Transport;
 import com.example.akhbariapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class AdminHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -42,11 +43,6 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.admin_home_interface);
 
         admin = getSharedPreferences("Admin",MODE_PRIVATE);
-
-        //FloatingActionButton fab = findViewById(R.id.floating_action_button);
-       // fab.setOnClickListener(view -> getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit());
-
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -123,19 +119,21 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
             case R.id.this_week:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new ThisWeek()).commit();
                 break;
-
             case R.id.past:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Past()).commit();
                 break;
-
             case R.id.transport:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Transport()).commit();
                 break;
-
+            case R.id.health:
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Health()).commit();
+                break;
+            case R.id.sport:
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Sport()).commit();
+                break;
             case R.id.politics:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Politics()).commit();
                 break;
-
             case R.id.education:
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Education()).commit();
                 break;

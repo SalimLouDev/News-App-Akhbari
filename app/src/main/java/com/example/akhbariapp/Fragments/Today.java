@@ -43,8 +43,8 @@ public class Today extends Fragment {
         }
 
         ArrayList<PostsEntity>posts = new ArrayList<>();
- //       for(int i=0;i<10;i++)
-//        posts.add(new PostsEntity("Manhattan Bridge","The Manhattan Bridge is a suspension bridge that ..."));
+        for(int i=0;i<10;i++)
+        posts.add(new PostsEntity("Manhattan Bridge","The Manhattan Bridge is a suspension bridge that ...","Oran","Health",new Date(),""));
 
             RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
             post_list.setLayoutManager(new LinearLayoutManager(getContext()));

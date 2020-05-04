@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,9 +16,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
+import com.example.akhbariapp.Fragments.AdminPost;
 import com.example.akhbariapp.Fragments.Education;
 import com.example.akhbariapp.Fragments.Health;
+import com.example.akhbariapp.Fragments.Inbox;
 import com.example.akhbariapp.Fragments.Past;
 import com.example.akhbariapp.Fragments.Politics;
 import com.example.akhbariapp.Fragments.Sport;
@@ -25,6 +30,7 @@ import com.example.akhbariapp.Fragments.ThisWeek;
 import com.example.akhbariapp.Fragments.Today;
 import com.example.akhbariapp.Fragments.Transport;
 import com.example.akhbariapp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -56,6 +62,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Today()).commit();
             navigationView.setCheckedItem(R.id.today);
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
     }
 
     @Override
@@ -65,6 +75,36 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+
+        if (id==R.id.contact_us){
+
+            Intent intent = new Intent(HomeActivity.this,ContactUs.class);
+            startActivity(intent);
+            return false;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
+        Fragment fragment=null;
+        switch (item.getItemId()){
+
+            case R.id.nav_home:
+                fragment = new Today();
+                break;
+            case R.id.nav_msg:
+                fragment = new Inbox();
+                break;
+
+        }
+        assert fragment != null;
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+        return true;
+    };
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

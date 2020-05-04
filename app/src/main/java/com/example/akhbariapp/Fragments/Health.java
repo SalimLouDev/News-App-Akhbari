@@ -26,11 +26,11 @@ public class Health extends Fragment {
 
         if(Objects.equals(user_state, "normal_user")){
             HomeActivity homeActivity = (HomeActivity) getActivity();
-            Objects.requireNonNull(Objects.requireNonNull(homeActivity).getSupportActionBar()).setTitle(getString(R.string.health));
+            Objects.requireNonNull(Objects.requireNonNull(homeActivity).getSupportActionBar()).setTitle("Health");
         }
         else if(Objects.equals(user_state, "admin")){
             AdminHomeActivity adminHomeActivity = (AdminHomeActivity) getActivity();
-            Objects.requireNonNull(Objects.requireNonNull(adminHomeActivity).getSupportActionBar()).setTitle(getString(R.string.health));
+            Objects.requireNonNull(Objects.requireNonNull(adminHomeActivity).getSupportActionBar()).setTitle("Health");
         }
 
         return root;
