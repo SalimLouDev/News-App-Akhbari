@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -41,8 +43,8 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
 
         admin = getSharedPreferences("Admin",MODE_PRIVATE);
 
-        FloatingActionButton fab = findViewById(R.id.floating_action_button);
-        fab.setOnClickListener(view -> getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit());
+        //FloatingActionButton fab = findViewById(R.id.floating_action_button);
+       // fab.setOnClickListener(view -> getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new AdminPostMessage()).commit());
 
 
 
@@ -69,20 +71,35 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+        int id=item.getItemId();
+
+        if (id==R.id.contact_us){
+
+            Intent intent = new Intent(AdminHomeActivity.this,ContactUs.class);
+            startActivity(intent);
+            return false;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
         Fragment fragment=null;
+        Animation animation;
         switch (item.getItemId()){
 
             case R.id.nav_home:
                 fragment = new Today();
                 break;
             case R.id.add_post:
-                fragment = new AdminPost();
+                animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
+                fragment = new AdminPost(animation);
                 break;
             case R.id.nav_msg:
-                fragment = new Inbox();
+                animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
+                fragment = new Inbox(animation);
                 break;
 
         }

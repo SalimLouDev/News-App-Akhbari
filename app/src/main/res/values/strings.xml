@@ -49,6 +49,12 @@
     <string name="send">Send</string>
     <string name="city">City</string>
     <string name="log_out">Log out</string>
+    <string name="corona_diagnosis">Corona Diagnosis</string>
+    <string name="coronavirus_health_helpline">CORONAVIRUS HEALTH HELPLINE</string>
+    <string name="ministry_of_health"><![CDATA[Ministry of Health & Prevention at 800-111. \nEstijaba service 800-177. \nDubai Health Authority at 800-334.]]></string>
+    <string name="helpline_for_mental_health">HELPLINE FOR MENTAL HEALTH</string>
+    <string name="_04_5192519">04-5192519</string>
+    <string name="technical_helping_for_distant_n_learning">TECHNICAL HELPING FOR DISTANT\n LEARNING</string>
 
     <string-array name="Cities">
         <item>Oran</item>
