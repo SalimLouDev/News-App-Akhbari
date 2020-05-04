@@ -1,4 +1,4 @@
-package com.example.akhbariapp;
+package com.example.akhbariapp.Entity;
 
 import org.w3c.dom.Text;
 

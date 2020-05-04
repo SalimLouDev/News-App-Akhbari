@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.akhbariapp.Activities.AdminHomeActivity;
-import com.example.akhbariapp.MessageAdapter;
-import com.example.akhbariapp.MessageItem;
+import com.example.akhbariapp.RecyclerViewAdapters.MessageAdapter;
+import com.example.akhbariapp.Entity.MessageItem;
 import com.example.akhbariapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

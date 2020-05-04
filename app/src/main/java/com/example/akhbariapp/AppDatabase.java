@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.akhbariapp.Dao.NationalCardsDao;
+import com.example.akhbariapp.Dao.PostDao;
 import com.example.akhbariapp.Dao.UserDao;
 import com.example.akhbariapp.Entity.EntityUser;
 import com.example.akhbariapp.Entity.NationalCardsEntity;
@@ -16,11 +18,13 @@ import com.example.akhbariapp.Entity.PostsEntity;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {EntityUser.class, NationalCardsEntity.class, PostsEntity.class},version = 4)
+@Database(entities = {EntityUser.class, NationalCardsEntity.class, PostsEntity.class},version = 5)
+@TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
     public abstract UserDao userDao();
+    public abstract PostDao postDao();
     public abstract NationalCardsDao nationalCardsDao();
     public static synchronized AppDatabase getinstance(Context context){
         if(instance==null){

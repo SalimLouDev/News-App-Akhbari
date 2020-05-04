@@ -8,17 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.Activities.HomeActivity;
 import com.example.akhbariapp.Entity.PostsEntity;
-import com.example.akhbariapp.PostRecyclerViewAdapter;
+import com.example.akhbariapp.RecyclerViewAdapters.PostRecyclerViewAdapter;
 import com.example.akhbariapp.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.akhbariapp.ViewModel.PostsViewModel;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class Today extends Fragment {
@@ -41,10 +43,13 @@ public class Today extends Fragment {
         }
 
         ArrayList<PostsEntity>posts = new ArrayList<>();
-        for(int i=0;i<10;i++)
-        posts.add(new PostsEntity("Manhattan Bridge","The Manhattan Bridge is a suspension bridge that ..."));
+ //       for(int i=0;i<10;i++)
+//        posts.add(new PostsEntity("Manhattan Bridge","The Manhattan Bridge is a suspension bridge that ..."));
 
-        RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
+            RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
+            post_list.setLayoutManager(new LinearLayoutManager(getContext()));
+            PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext(),posts);
+            post_list.setAdapter(adapter);
         /*FloatingActionButton floatingActionButton = Objects.requireNonNull(requireActivity()).findViewById(R.id.floating_action_button_for_mail_interface);
 
         if (Objects.requireNonNull(user_state).equals("admin")){
@@ -68,9 +73,8 @@ public class Today extends Fragment {
             });
         }*/
 
-        post_list.setLayoutManager(new LinearLayoutManager(getContext()));
-        PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext(),posts);
-        post_list.setAdapter(adapter);
+        PostsViewModel postsViewModel = new ViewModelProvider(this).get(PostsViewModel.class);
+        postsViewModel.gettodayposts(new Date()).observe(getViewLifecycleOwner(), adapter::setList);
         return root;
     }
 }

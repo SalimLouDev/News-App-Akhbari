@@ -54,6 +54,7 @@
                 android:background="@drawable/shadow_for_toolbar" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/post_title"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -61,7 +62,6 @@
                 android:textColorHint="#FFF">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -108,7 +108,7 @@
                     android:textColorHint="#FFF">
 
                     <AutoCompleteTextView
-                        android:id="@+id/tags"
+                        android:id="@+id/post_type"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
@@ -130,13 +130,13 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/post_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textColorHint="#FFF">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"

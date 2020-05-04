@@ -23,6 +23,7 @@ public class Health extends Fragment {
         View root = inflater.inflate(R.layout.posts_fragment,container,false);
 
         String user_state = Objects.requireNonNull(getActivity()).getIntent().getStringExtra("user");
+
         if(Objects.equals(user_state, "normal_user")){
             HomeActivity homeActivity = (HomeActivity) getActivity();
             Objects.requireNonNull(Objects.requireNonNull(homeActivity).getSupportActionBar()).setTitle(getString(R.string.health));

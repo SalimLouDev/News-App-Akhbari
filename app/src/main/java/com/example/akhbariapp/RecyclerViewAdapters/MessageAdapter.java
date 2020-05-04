@@ -1,13 +1,15 @@
-package com.example.akhbariapp;
+package com.example.akhbariapp.RecyclerViewAdapters;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.akhbariapp.Entity.MessageItem;
+import com.example.akhbariapp.R;
 
 import java.util.ArrayList;
 
