@@ -24,7 +24,7 @@ public class NationalCardsRepository {
 
         private NationalCardsDao nationalCardsDao;
 
-        public CheckNatId(NationalCardsDao nationalCardsDao) {
+        CheckNatId(NationalCardsDao nationalCardsDao) {
             this.nationalCardsDao = nationalCardsDao;
         }
 

@@ -95,7 +95,8 @@
                 android:backgroundTint="@android:color/white"
                 android:fontFamily="@font/roboto_thin"
                 android:hint="@string/national_id"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:focusableInTouchMode="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

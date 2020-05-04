@@ -42,15 +42,15 @@ public abstract class AppDatabase extends RoomDatabase {
             Executors.newSingleThreadScheduledExecutor().execute(() -> {
 
                 NationalCardsDao dao = instance.nationalCardsDao();
-                NationalCardsEntity nationalCardsEntity = new NationalCardsEntity("Oucif","Mohamed","Oran",1000);
+                NationalCardsEntity nationalCardsEntity = new NationalCardsEntity("OUCIF","MOHAMED","ORAN",1000);
                 dao.insert(nationalCardsEntity);
-                NationalCardsEntity nationalCardsEntity1 = new NationalCardsEntity("Loucif","Salim","Oran",2000);
+                NationalCardsEntity nationalCardsEntity1 = new NationalCardsEntity("SALIM","LOUCIF","ORAN",2000);
                 dao.insert(nationalCardsEntity1);
-                NationalCardsEntity nationalCardsEntity3 = new NationalCardsEntity("Touil","Houari","Oran",3000);
+                NationalCardsEntity nationalCardsEntity3 = new NationalCardsEntity("TOUIL","HOUARI","ORAN",3000);
                 dao.insert(nationalCardsEntity3);
-                NationalCardsEntity nationalCardsEntity4 = new NationalCardsEntity("Chaouch","Yacine","Oran",4000);
+                NationalCardsEntity nationalCardsEntity4 = new NationalCardsEntity("CHAOUCH","YACINE","ORAN",4000);
                 dao.insert(nationalCardsEntity4);
-                NationalCardsEntity nationalCardsEntity5 = new NationalCardsEntity("Benhamadouch","Walid","Oran",6000);
+                NationalCardsEntity nationalCardsEntity5 = new NationalCardsEntity("Benhamadouch","Walid","ORAN",6000);
                 dao.insert(nationalCardsEntity5);
 
             });

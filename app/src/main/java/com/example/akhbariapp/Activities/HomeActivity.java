@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,27 +17,28 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.akhbariapp.Fragments.Education;
+import com.example.akhbariapp.Fragments.Health;
 import com.example.akhbariapp.Fragments.Past;
 import com.example.akhbariapp.Fragments.Politics;
+import com.example.akhbariapp.Fragments.Sport;
 import com.example.akhbariapp.Fragments.ThisWeek;
 import com.example.akhbariapp.Fragments.Today;
 import com.example.akhbariapp.Fragments.Transport;
 import com.example.akhbariapp.R;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
-    private SharedPreferences admin;
     private SharedPreferences.Editor admin_editor;
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_interface);
 
-        admin = getSharedPreferences("Admin",MODE_PRIVATE);
+        SharedPreferences admin = getSharedPreferences("Admin", MODE_PRIVATE);
         admin_editor = admin.edit();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -72,19 +74,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.this_week:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ThisWeek()).commit();
                 break;
-
             case R.id.past:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Past()).commit();
                 break;
-
+            case R.id.health:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Health()).commit();
+                break;
+            case R.id.sport:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Sport()).commit();
+                break;
             case R.id.transport:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Transport()).commit();
                 break;
-
             case R.id.politics:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Politics()).commit();
                 break;
-
             case R.id.education:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Education()).commit();
                 break;

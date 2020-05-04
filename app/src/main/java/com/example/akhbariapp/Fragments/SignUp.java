@@ -80,23 +80,22 @@ public class SignUp extends Fragment {
 
 
     private void add_user() throws ExecutionException, InterruptedException {
-        if((Objects.requireNonNull(first_name.getEditText()).getText().toString().trim().isEmpty() ||
-                Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().isEmpty() ||
-                Objects.requireNonNull(password.getEditText()).getText().toString().trim().isEmpty() ||
-                Objects.requireNonNull(national_id.getEditText()).getText().toString().trim().isEmpty() ||
-                city.getEditableText().toString().trim().isEmpty()) && !admin_code_checkbox.isChecked()){
+        if((Objects.requireNonNull(first_name.getEditText()).getText().toString().trim().isEmpty()  ||
+            Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().isEmpty()   ||
+            Objects.requireNonNull(password.getEditText()).getText().toString().trim().isEmpty()    ||
+            Objects.requireNonNull(national_id.getEditText()).getText().toString().trim().isEmpty() ||
+            city.getEditableText().toString().trim().isEmpty()) || (admin_code_checkbox.isChecked() &&
+              Objects.requireNonNull(admin_code.getEditText()).getText().toString().trim().isEmpty()))
+        {
             Toast.makeText(getContext(),"You have to fill all the fields",Toast.LENGTH_SHORT).show();
         }
-        else if(admin_code_checkbox.isChecked() &&
-                Objects.requireNonNull(admin_code.getEditText()).getText().toString().trim().isEmpty()){
-                Toast.makeText(getContext(),"You have to fill the code filed",Toast.LENGTH_SHORT).show();
-        }
         else {
-            String firstname = first_name.getEditText().getText().toString().trim();
-            String lastname = Objects.requireNonNull(last_name.getEditText()).getText().toString().trim();
+            String firstname = first_name.getEditText().getText().toString().trim().toUpperCase();
+            String lastname = Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().toUpperCase();
             String _password = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
             int nat_id = Integer.parseInt(Objects.requireNonNull(national_id.getEditText()).getText().toString().trim());
-            String _city = city.getEditableText().toString().trim();
+            String _city = city.getEditableText().toString().trim().toUpperCase();
+
 
             NationalCardsEntity nationalCard = nationalCardsViewModel.check_nat(firstname,lastname,_city,String.valueOf(nat_id));
 

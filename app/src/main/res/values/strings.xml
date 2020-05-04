@@ -55,6 +55,8 @@
     <string name="helpline_for_mental_health">HELPLINE FOR MENTAL HEALTH</string>
     <string name="_04_5192519">04–5192519</string>
     <string name="technical_helping_for_distant_n_learning">TECHNICAL HELPING FOR DISTANT\n LEARNING</string>
+    <string name="tags">Tags</string>
+    <string name="image">Image</string>
 
     <string-array name="Cities">
         <item>Oran</item>
