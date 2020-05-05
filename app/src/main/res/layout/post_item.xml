@@ -24,8 +24,7 @@
             <ImageView
                 android:id="@+id/post_image"
                 android:layout_width="match_parent"
-                android:layout_height="194dp"
-                android:background="@drawable/city" />
+                android:layout_height="194dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

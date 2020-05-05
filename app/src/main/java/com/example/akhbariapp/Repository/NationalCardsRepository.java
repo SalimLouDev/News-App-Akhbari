@@ -7,6 +7,7 @@ import com.example.akhbariapp.AppDatabase;
 import com.example.akhbariapp.Dao.NationalCardsDao;
 import com.example.akhbariapp.Entity.NationalCardsEntity;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class NationalCardsRepository {
@@ -17,10 +18,10 @@ public class NationalCardsRepository {
         nationalCardsDao = appDatabase.nationalCardsDao();
     }
 
-    public NationalCardsEntity check_nat(String f,String l,String r,String nat_id) throws ExecutionException, InterruptedException {
+    public List<NationalCardsEntity> check_nat(String f,String l,String r,String nat_id) throws ExecutionException, InterruptedException {
         return new CheckNatId(nationalCardsDao).execute(f,l,r,nat_id).get();
     }
-    static class CheckNatId extends AsyncTask<String,Void, NationalCardsEntity>{
+    static class CheckNatId extends AsyncTask<String,Void, List<NationalCardsEntity>>{
 
         private NationalCardsDao nationalCardsDao;
 
@@ -29,8 +30,8 @@ public class NationalCardsRepository {
         }
 
         @Override
-        protected NationalCardsEntity doInBackground(String... strings) {
-            return nationalCardsDao.check(strings[0],strings[1],strings[2],strings[3]);
+        protected List<NationalCardsEntity> doInBackground(String... strings) {
+            return nationalCardsDao.check(strings[0],strings[1],strings[2],Integer.parseInt(strings[3]));
         }
     }
 }

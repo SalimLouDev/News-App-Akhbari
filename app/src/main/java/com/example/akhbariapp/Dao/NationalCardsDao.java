@@ -6,6 +6,8 @@ import androidx.room.Query;
 
 import com.example.akhbariapp.Entity.NationalCardsEntity;
 
+import java.util.List;
+
 @Dao
 public interface NationalCardsDao {
 
@@ -13,6 +15,6 @@ public interface NationalCardsDao {
     void insert(NationalCardsEntity nationalCardsEntity);
 
     @Query("SELECT * FROM NationalCards WHERE first_name=:f AND last_name=:l AND residence=:r AND national_id=:nat")
-    NationalCardsEntity check (String f,String l,String r,String nat);
+    List<NationalCardsEntity> check (String f, String l, String r, int nat);
 
 }

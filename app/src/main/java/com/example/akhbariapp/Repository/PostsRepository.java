@@ -25,7 +25,7 @@ public class PostsRepository {
         new InsertPost(postDao).execute(post);
     }
 
-    public LiveData<List<PostsEntity>> gettodayposts(Date today){
+    public LiveData<List<PostsEntity>> gettodayposts(long today){
        return postDao.gettodayposts(today);
     }
 

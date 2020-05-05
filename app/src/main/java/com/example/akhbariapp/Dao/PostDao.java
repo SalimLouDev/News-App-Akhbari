@@ -17,5 +17,5 @@ public interface PostDao {
     void insert(PostsEntity postsEntity);
 
     @Query("SELECT * FROM Post WHERE post_date=:today")
-    LiveData<List<PostsEntity>>gettodayposts(Date today);
+    LiveData<List<PostsEntity>>gettodayposts(long today);
 }

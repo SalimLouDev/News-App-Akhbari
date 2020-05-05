@@ -18,8 +18,8 @@ import com.example.akhbariapp.Entity.PostsEntity;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {EntityUser.class, NationalCardsEntity.class, PostsEntity.class},version = 5)
 @TypeConverters({DateConverter.class})
+@Database(entities = {EntityUser.class, NationalCardsEntity.class, PostsEntity.class},version = 5)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
@@ -28,11 +28,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract NationalCardsDao nationalCardsDao();
     public static synchronized AppDatabase getinstance(Context context){
         if(instance==null){
-            instance = Room.databaseBuilder(context,AppDatabase.class,"Database")
+            instance = Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class,"Database")
                     .fallbackToDestructiveMigration()
                     .addCallback(sRoomDatabaseCalback)
                     .build();
-            return instance;
         }
 
         return instance;

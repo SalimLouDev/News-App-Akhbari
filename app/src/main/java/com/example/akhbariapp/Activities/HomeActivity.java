@@ -16,10 +16,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
-import com.example.akhbariapp.Fragments.AdminPost;
 import com.example.akhbariapp.Fragments.Education;
 import com.example.akhbariapp.Fragments.Health;
 import com.example.akhbariapp.Fragments.Inbox;
@@ -93,10 +90,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment=null;
         switch (item.getItemId()){
 
-            case R.id.nav_home:
+            case R.id.admin_nav_home:
                 fragment = new Today();
                 break;
-            case R.id.nav_msg:
+            case R.id.admin_nav_msg:
                 fragment = new Inbox();
                 break;
 

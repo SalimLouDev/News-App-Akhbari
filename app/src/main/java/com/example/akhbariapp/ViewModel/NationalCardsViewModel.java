@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import com.example.akhbariapp.Entity.NationalCardsEntity;
 import com.example.akhbariapp.Repository.NationalCardsRepository;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class NationalCardsViewModel extends AndroidViewModel {
@@ -18,7 +19,7 @@ public class NationalCardsViewModel extends AndroidViewModel {
         nationalCardsRepository = new NationalCardsRepository(application);
     }
 
-    public NationalCardsEntity check_nat (String f,String l,String r,String nat) throws ExecutionException, InterruptedException {
+    public List<NationalCardsEntity> check_nat (String f, String l, String r, String nat) throws ExecutionException, InterruptedException {
         return nationalCardsRepository.check_nat(f,l,r,nat);
     }
 }

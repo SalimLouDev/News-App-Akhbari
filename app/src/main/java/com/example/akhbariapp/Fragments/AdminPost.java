@@ -27,6 +27,8 @@ import com.example.akhbariapp.ViewModel.PostsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.joda.time.LocalDate;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -125,7 +127,7 @@ public class AdminPost extends Fragment {
     }
 
     private void add_post(){
-        Date post_date = new Date();
+        LocalDate post_date = LocalDate.now();
         String title = Objects.requireNonNull(post_title.getEditText()).getText().toString().trim();
         String desc = Objects.requireNonNull(post_desc.getEditText()).getText().toString().trim();
         String _city = city.getEditableText().toString().trim();

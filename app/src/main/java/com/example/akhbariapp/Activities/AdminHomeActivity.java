@@ -18,7 +18,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.akhbariapp.Fragments.AdminPost;
-import com.example.akhbariapp.Fragments.AdminPostMessage;
 import com.example.akhbariapp.Fragments.Education;
 import com.example.akhbariapp.Fragments.Health;
 import com.example.akhbariapp.Fragments.Inbox;
@@ -37,6 +36,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout drawerLayout;
     private SharedPreferences admin;
     private SharedPreferences.Editor editor;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.admin_nav_view);
+        navigationView = findViewById(R.id.admin_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
@@ -62,8 +62,6 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.admin_bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
-
 
     }
 
@@ -82,27 +80,27 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
-        Fragment fragment=null;
+        Fragment fragment;
         Animation animation;
-        switch (item.getItemId()){
 
-            case R.id.nav_home:
-                fragment = new Today();
+        switch (item.getItemId()){
+            case R.id.admin_nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Today()).commit();
                 break;
-            case R.id.add_post:
+            case R.id.admin_add_post:
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
-                fragment = new AdminPost(animation);
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new AdminPost(animation)).commit();
                 break;
-            case R.id.nav_msg:
+            case R.id.admin_nav_msg:
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
-                fragment = new Inbox(animation);
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Inbox(animation)).commit();
                 break;
 
         }
-        assert fragment != null;
-        getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,fragment).commit();
+
         return true;
     };
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

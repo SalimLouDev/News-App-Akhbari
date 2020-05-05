@@ -1,11 +1,9 @@
 package com.example.akhbariapp.Entity;
 
-import android.net.Uri;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
+import org.joda.time.LocalDate;
 
 @Entity(tableName = "Post")
 public class PostsEntity {
@@ -13,9 +11,9 @@ public class PostsEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title,description,post_type,city;
-    private Date post_date;
+    private LocalDate post_date;
     private String image_uri;
-    public PostsEntity(String title,String description,String city,String post_type,Date post_date,String image_uri) {
+    public PostsEntity(String title,String description,String city,String post_type,LocalDate post_date,String image_uri) {
         this.title=title;
         this.description=description;
         this.city=city;
@@ -62,11 +60,11 @@ public class PostsEntity {
         this.city = city;
     }
 
-    public Date getPost_date() {
+    public LocalDate getPost_date() {
         return post_date;
     }
 
-    public void setPost_date(Date post_date) {
+    public void setPost_date(LocalDate post_date) {
         this.post_date = post_date;
     }
 

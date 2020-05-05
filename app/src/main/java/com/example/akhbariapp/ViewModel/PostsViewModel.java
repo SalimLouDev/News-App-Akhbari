@@ -15,7 +15,6 @@ import java.util.List;
 public class PostsViewModel extends AndroidViewModel {
 
     private PostsRepository postsRepository;
-
     public PostsViewModel(@NonNull Application application) {
         super(application);
         postsRepository = new PostsRepository(application);
@@ -25,7 +24,7 @@ public class PostsViewModel extends AndroidViewModel {
         postsRepository.insert_post(postsEntity);
     }
 
-    public LiveData<List<PostsEntity>> gettodayposts(Date today){
+    public LiveData<List<PostsEntity>> gettodayposts(long today){
         return postsRepository.gettodayposts(today);
     }
 }
