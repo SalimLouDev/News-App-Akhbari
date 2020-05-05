@@ -25,6 +25,7 @@ import com.example.akhbariapp.ViewModel.NationalCardsViewModel;
 import com.example.akhbariapp.ViewModel.UserViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
@@ -80,31 +81,33 @@ public class SignUp extends Fragment {
 
 
     private void add_user() throws ExecutionException, InterruptedException {
-        if((Objects.requireNonNull(first_name.getEditText()).getText().toString().trim().isEmpty()  ||
-            Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().isEmpty()   ||
-            Objects.requireNonNull(password.getEditText()).getText().toString().trim().isEmpty()    ||
-            Objects.requireNonNull(national_id.getEditText()).getText().toString().trim().isEmpty() ||
-            city.getEditableText().toString().trim().isEmpty()) || (admin_code_checkbox.isChecked() &&
+
+        String firstname = first_name.getEditText().getText().toString().trim().toUpperCase();
+        String lastname = Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().toUpperCase();
+        String _password = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
+        String nat_id = Objects.requireNonNull(national_id.getEditText()).getText().toString().trim();
+        String _city = city.getEditableText().toString().trim().toUpperCase();
+
+        if((firstname.trim().isEmpty()||
+                lastname.trim().isEmpty()||
+            _password.trim().isEmpty()||
+            nat_id.trim().isEmpty()||
+            _city.trim().isEmpty())||(admin_code_checkbox.isChecked() &&
               Objects.requireNonNull(admin_code.getEditText()).getText().toString().trim().isEmpty()))
         {
             Toast.makeText(getContext(),"You have to fill all the fields",Toast.LENGTH_SHORT).show();
         }
         else {
-            String firstname = first_name.getEditText().getText().toString().trim().toUpperCase();
-            String lastname = Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().toUpperCase();
-            String _password = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
-            int nat_id = Integer.parseInt(Objects.requireNonNull(national_id.getEditText()).getText().toString().trim());
-            String _city = city.getEditableText().toString().trim().toUpperCase();
 
+            List<NationalCardsEntity> nationalCardsEntity;
+            nationalCardsEntity = nationalCardsViewModel.check_nat(firstname,lastname,_city,nat_id);
 
-            NationalCardsEntity nationalCard = nationalCardsViewModel.check_nat(firstname,lastname,_city,String.valueOf(nat_id));
-
-            if(nationalCard==null){
+            if(nationalCardsEntity.size()==0){
                 Toast.makeText(getContext(),"You are not in the government database",Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            EntityUser user_check = userViewModel.check(firstname,lastname,String.valueOf(nat_id));
+            EntityUser user_check = userViewModel.check(firstname,lastname,nat_id);
 
             if(user_check!=null){
                 Toast.makeText(getContext(),"You already have an account",Toast.LENGTH_SHORT).show();
@@ -117,7 +120,7 @@ public class SignUp extends Fragment {
                 if(_admin_code==admin.getInt("admin_code",0)){
 
 
-                    EntityUser user = new EntityUser(firstname,lastname,_password,_city,nat_id,_admin_code,"normal_user");
+                    EntityUser user = new EntityUser(firstname,lastname,_password,_city,Integer.parseInt(nat_id),_admin_code,"normal_user");
                     userViewModel.add_user(user);
 
                     fields_save.putString("first_name",firstname);
@@ -131,7 +134,7 @@ public class SignUp extends Fragment {
                     Toast.makeText(getContext(),"Admin code is wrong",Toast.LENGTH_SHORT).show();
                 }
             }else {
-                EntityUser user = new EntityUser(firstname,lastname,_password,_city,nat_id,0,"admin");
+                EntityUser user = new EntityUser(firstname,lastname,_password,_city,Integer.parseInt(nat_id),0,"admin");
                 userViewModel.add_user(user);
 
                 fields_save.putString("first_name",firstname);
