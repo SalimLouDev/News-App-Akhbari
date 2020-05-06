@@ -14,7 +14,7 @@ public class UserRepository {
     private UserDao userDao;
     public UserRepository(Application application){
 
-        AppDatabase database = AppDatabase.getinstance(application);
+        AppDatabase database = AppDatabase.getInstance(application);
         userDao = database.userDao();
     }
 

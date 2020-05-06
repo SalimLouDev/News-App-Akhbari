@@ -17,7 +17,7 @@ public class PostsRepository {
     private PostDao postDao;
 
     public PostsRepository(Application application) {
-        AppDatabase appDatabase = AppDatabase.getinstance(application);
+        AppDatabase appDatabase = AppDatabase.getInstance(application);
         postDao = appDatabase.postDao();
     }
 

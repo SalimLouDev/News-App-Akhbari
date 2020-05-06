@@ -5,26 +5,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.Activities.HomeActivity;
+import com.example.akhbariapp.Entity.MessageEntity;
 import com.example.akhbariapp.RecyclerViewAdapters.MessageAdapter;
-import com.example.akhbariapp.Entity.MessageItem;
+import com.example.akhbariapp.MessageItem;
 import com.example.akhbariapp.R;
+import com.example.akhbariapp.ViewModel.MessagesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Inbox extends Fragment {
 
     private Animation animation;
+    private MessagesViewModel messagesViewModel;
     private FloatingActionButton fab;
     public Inbox(){}
     public Inbox(Animation animation){
@@ -38,15 +45,24 @@ public class Inbox extends Fragment {
         View root = inflater.inflate(R.layout.inbox_interface,container,false);
         String user_state = Objects.requireNonNull(getActivity()).getIntent().getStringExtra("user");
         fab = root.findViewById(R.id.floating_action_button_for_mail_interface);
-        ArrayList<MessageItem> messageItemArrayList = new ArrayList<>();
-        for (int i=0; i<10;i++) messageItemArrayList.add(new MessageItem("Corona Diagnosis","We kindly inform you that the ...","25-04-2020","11:34"));
 
         RecyclerView recyclerView = root.findViewById(R.id.message_recycle_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        RecyclerView.Adapter adapter = new MessageAdapter(messageItemArrayList);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+
+        MessageAdapter messageAdapter = new MessageAdapter();
+        recyclerView.setAdapter(messageAdapter);
+
+
+
+
+
+
+        messagesViewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
+        messagesViewModel.getAllMessages().observe(getViewLifecycleOwner(), messageAdapter::setArrayListItems);
+
+
 
 
 

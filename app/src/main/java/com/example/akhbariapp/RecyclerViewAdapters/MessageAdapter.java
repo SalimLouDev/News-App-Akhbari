@@ -8,33 +8,36 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.akhbariapp.Entity.MessageItem;
+import com.example.akhbariapp.Entity.MessageEntity;
+import com.example.akhbariapp.MessageItem;
 import com.example.akhbariapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.messageViewHolder> {
 
-    private ArrayList<MessageItem> arrayListItems;
-    public static class messageViewHolder extends RecyclerView.ViewHolder{
-        public TextView title;
-        public TextView read_more;
-        public TextView date;
-        public TextView time;
+    private List<MessageEntity> arrayListItems = new ArrayList<>();
+
+     static class messageViewHolder extends RecyclerView.ViewHolder{
+        private TextView title;
+        private TextView read_more;
+        private TextView date;
+        private  TextView time;
 
 
-        public messageViewHolder(@NonNull View itemView) {
+         messageViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.message_title);
             read_more = itemView.findViewById(R.id.message_read_more);
             date = itemView.findViewById(R.id.message_date);
-            time = itemView.findViewById(R.id.message_time);
+             time = itemView.findViewById(R.id.message_time);
         }
-    }
+     }
 
-    public MessageAdapter(ArrayList<MessageItem> messageItemArrayList){
+    /*public MessageAdapter(ArrayList<MessageEntity> messageItemArrayList){
         this.arrayListItems=messageItemArrayList;
-    }
+    }*/
 
     @NonNull
     @Override
@@ -46,9 +49,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.messageV
     @Override
     public void onBindViewHolder(@NonNull messageViewHolder holder, int position) {
 
-        MessageItem currentItem = arrayListItems.get(position);
+        MessageEntity currentItem = arrayListItems.get(position);
         holder.title.setText(currentItem.getTitle());
-        holder.read_more.setText(currentItem.getRead_more());
+        holder.read_more.setText(currentItem.getDescription());
         holder.date.setText(currentItem.getDate());
         holder.time.setText(currentItem.getTime());
     }
@@ -57,4 +60,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.messageV
     public int getItemCount() {
         return arrayListItems.size();
     }
+
+    public void setArrayListItems(List<MessageEntity> messageEntityList){
+        this.arrayListItems = messageEntityList;
+        notifyDataSetChanged();
+    }
+
 }

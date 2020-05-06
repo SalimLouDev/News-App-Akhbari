@@ -14,7 +14,7 @@ public class NationalCardsRepository {
 
     private NationalCardsDao nationalCardsDao;
     public NationalCardsRepository(Application application) {
-        AppDatabase appDatabase = AppDatabase.getinstance(application);
+        AppDatabase appDatabase = AppDatabase.getInstance(application);
         nationalCardsDao = appDatabase.nationalCardsDao();
     }
 

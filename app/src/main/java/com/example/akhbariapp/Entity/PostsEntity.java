@@ -10,9 +10,13 @@ public class PostsEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+
     private String title,description,post_type,city;
+
     private LocalDate post_date;
+
     private String image_uri;
+
     public PostsEntity(String title,String description,String city,String post_type,LocalDate post_date,String image_uri) {
         this.title=title;
         this.description=description;

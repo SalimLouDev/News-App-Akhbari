@@ -1,6 +1,6 @@
-package com.example.akhbariapp.Entity;
+package com.example.akhbariapp;
 
-import org.w3c.dom.Text;
+
 
 public class MessageItem {
 
