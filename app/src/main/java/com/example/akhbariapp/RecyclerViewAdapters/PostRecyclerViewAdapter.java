@@ -1,6 +1,5 @@
 package com.example.akhbariapp.RecyclerViewAdapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -16,10 +15,8 @@ import com.bumptech.glide.Glide;
 import com.example.akhbariapp.Entity.PostsEntity;
 import com.example.akhbariapp.R;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerViewAdapter.ViewHolder>{
 
@@ -39,7 +36,6 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
         return new ViewHolder(root);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
@@ -51,10 +47,10 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
          ImageView post_image = holder.post_image;
          Uri image_uri = Uri.parse(posts.get(position).getImage_uri());
 
-//         Glide.with(context)
-//                .load(image_uri)
-//                .centerCrop()
-//                .into(post_image);
+         Glide.with(context)
+                .load(image_uri)
+                .centerCrop()
+                .into(post_image);
     }
 
     @Override
@@ -64,6 +60,7 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
 
     public void setList(List<PostsEntity>posts){
         this.posts = posts;
+        notifyDataSetChanged();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -72,7 +69,6 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
         private TextView post_title,read_more,post_date,post_time;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             post_image = itemView.findViewById(R.id.post_image);
             post_title = itemView.findViewById(R.id.post_title);
             read_more = itemView.findViewById(R.id.post_read_more);
