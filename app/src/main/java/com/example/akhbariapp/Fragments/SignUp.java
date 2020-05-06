@@ -82,7 +82,7 @@ public class SignUp extends Fragment {
 
     private void add_user() throws ExecutionException, InterruptedException {
 
-        String firstname = first_name.getEditText().getText().toString().trim().toUpperCase();
+        String firstname = Objects.requireNonNull(first_name.getEditText()).getText().toString().trim().toUpperCase();
         String lastname = Objects.requireNonNull(last_name.getEditText()).getText().toString().trim().toUpperCase();
         String _password = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
         String nat_id = Objects.requireNonNull(national_id.getEditText()).getText().toString().trim();
@@ -99,8 +99,8 @@ public class SignUp extends Fragment {
         }
         else {
 
-            List<NationalCardsEntity> nationalCardsEntity;
-            nationalCardsEntity = nationalCardsViewModel.check_nat(firstname,lastname,_city,nat_id);
+
+            List<NationalCardsEntity> nationalCardsEntity = nationalCardsViewModel.check_nat(firstname,lastname,_city,nat_id);
 
             if(nationalCardsEntity.size()==0){
                 Toast.makeText(getContext(),"You are not in the government database",Toast.LENGTH_SHORT).show();

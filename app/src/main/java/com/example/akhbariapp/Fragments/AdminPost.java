@@ -29,7 +29,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import org.joda.time.LocalDate;
 
-import java.util.Date;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
@@ -132,6 +131,16 @@ public class AdminPost extends Fragment {
         String desc = Objects.requireNonNull(post_desc.getEditText()).getText().toString().trim();
         String _city = city.getEditableText().toString().trim();
         String _post_type = post_type.getEditableText().toString().trim();
-        postsViewModel.add_post(new PostsEntity(title, desc, _city, _post_type,post_date,image_uri));
+        //postsViewModel.add_post(new PostsEntity(title, desc, _city, _post_type,post_date,image_uri));
+
+        if(title.isEmpty() || desc.isEmpty() || image_uri.isEmpty()){
+            Toast.makeText(getContext(),"You have to fill the title and the description and add an image",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(_post_type.equalsIgnoreCase("Sport")){
+            postsViewModel.add_post(new PostsEntity(title, desc,"", _post_type,post_date,image_uri));
+        }else {
+            postsViewModel.add_post(new PostsEntity(title, desc, _city, _post_type,post_date,image_uri));
+        }
     }
 }

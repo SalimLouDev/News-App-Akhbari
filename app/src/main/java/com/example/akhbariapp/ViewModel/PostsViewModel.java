@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData;
 import com.example.akhbariapp.Entity.PostsEntity;
 import com.example.akhbariapp.Repository.PostsRepository;
 
-import java.util.Date;
 import java.util.List;
 
 public class PostsViewModel extends AndroidViewModel {

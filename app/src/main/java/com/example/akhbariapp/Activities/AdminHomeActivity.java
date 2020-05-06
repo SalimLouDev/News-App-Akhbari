@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 
 import com.example.akhbariapp.Fragments.AdminPost;
 import com.example.akhbariapp.Fragments.Education;
@@ -36,7 +35,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout drawerLayout;
     private SharedPreferences admin;
     private SharedPreferences.Editor editor;
-    private NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +51,9 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.admin_nav_view);
+        NavigationView navigationView = findViewById(R.id.admin_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new Today()).commit();
@@ -80,7 +80,6 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
-        Fragment fragment;
         Animation animation;
 
         switch (item.getItemId()){
@@ -95,7 +94,6 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
                 getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Inbox(animation)).commit();
                 break;
-
         }
 
         return true;
@@ -145,6 +143,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
                 startActivity(intent);
                 finish();
                 break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

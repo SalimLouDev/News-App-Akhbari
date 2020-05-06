@@ -30,9 +30,7 @@
             android:layout_height="match_parent"
             android:layout_above="@id/admin_bottom_nav"
             android:layout_below="@+id/toolbar"
-            android:background="#0F084B">
-
-        </FrameLayout>
+            android:background="#0F084B"/>
 
         <View
             android:layout_width="match_parent"
