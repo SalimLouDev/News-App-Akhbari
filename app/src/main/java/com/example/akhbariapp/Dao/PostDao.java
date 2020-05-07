@@ -7,7 +7,6 @@ import androidx.room.Query;
 
 import com.example.akhbariapp.Entity.PostsEntity;
 
-import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -18,4 +17,10 @@ public interface PostDao {
 
     @Query("SELECT * FROM Post WHERE post_date=:today")
     LiveData<List<PostsEntity>>gettodayposts(long today);
+
+    @Query("SELECT * FROM Post WHERE post_date BETWEEN :f_day AND :s_day")
+    LiveData<List<PostsEntity>>get_week_posts(long f_day,long s_day);
+
+    @Query("SELECT * FROM Post WHERE post_type Like :post_t")
+    LiveData<List<PostsEntity>>get_posts_by_type(String post_t);
 }

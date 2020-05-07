@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,11 +20,13 @@ import com.example.akhbariapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerViewAdapter.ViewHolder>{
+public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerViewAdapter.ViewHolder> implements Filterable {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private List<PostsEntity>posts = new ArrayList<>();
+    private List<PostsEntity>full_posts;
+    private List<PostsEntity>full_posts_copy = new ArrayList<>();
+
     public PostRecyclerViewAdapter(Context context) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
@@ -39,13 +43,13 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-         holder.post_title.setText(posts.get(position).getTitle());
+         holder.post_title.setText(full_posts_copy.get(position).getTitle());
          holder.read_more.setText(R.string.read_more);
-         holder.post_date.setText(posts.get(position).getPost_date().toString("dd-MM-yyyy"));
-         holder.post_time.setText("11:11");
+         holder.post_date.setText(full_posts_copy.get(position).getPost_date().toString("dd-MM-yyyy"));
+         holder.post_time.setText(full_posts_copy.get(position).getPost_time().toString("HH:mm"));
 
          ImageView post_image = holder.post_image;
-         Uri image_uri = Uri.parse(posts.get(position).getImage_uri());
+         Uri image_uri = Uri.parse(full_posts_copy.get(position).getImage_uri());
 
          Glide.with(context)
                 .load(image_uri)
@@ -55,13 +59,49 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
 
     @Override
     public int getItemCount() {
-        return posts.size();
+        return full_posts_copy.size();
     }
 
-    public void setList(List<PostsEntity>posts){
-        this.posts = posts;
+    public void setList(List<PostsEntity>full_posts_copy){
+        this.full_posts_copy = full_posts_copy;
+        this.full_posts = new ArrayList<>(this.full_posts_copy);
         notifyDataSetChanged();
     }
+
+    @Override
+    public Filter getFilter() {
+        return search_post_filter;
+    }
+
+     private Filter search_post_filter = new Filter() {
+         @Override
+         protected FilterResults performFiltering(CharSequence constraint) {
+             List<PostsEntity> filtered_list = new ArrayList<>();
+
+             if(constraint==null || constraint.length()==0){
+                 filtered_list.addAll(full_posts);
+
+             }else {
+                 String filter_pattern = constraint.toString().toLowerCase().trim();
+                 for(PostsEntity postsEntity : full_posts){
+                     if(postsEntity.getTitle().toLowerCase().contains(filter_pattern)){
+                         filtered_list.add(postsEntity);
+                     }
+                 }
+             }
+
+             FilterResults filterResults = new FilterResults();
+             filterResults.values = filtered_list;
+             return filterResults;
+         }
+
+         @Override
+         protected void publishResults(CharSequence constraint, FilterResults results) {
+            full_posts_copy.clear();
+            full_posts_copy.addAll((List) results.values);
+            notifyDataSetChanged();
+         }
+     };
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
