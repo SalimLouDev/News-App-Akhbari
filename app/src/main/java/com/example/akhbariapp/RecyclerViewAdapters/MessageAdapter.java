@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.akhbariapp.Entity.MessageEntity;
@@ -15,11 +17,27 @@ import com.example.akhbariapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.messageViewHolder> {
+public class MessageAdapter extends ListAdapter<MessageEntity,MessageAdapter.messageViewHolder> {
 
-    private List<MessageEntity> arrayListItems = new ArrayList<>();
 
-     static class messageViewHolder extends RecyclerView.ViewHolder{
+    public MessageAdapter() {
+        super(DIFF_CALLBACK);
+
+    }
+
+    private static final DiffUtil.ItemCallback<MessageEntity> DIFF_CALLBACK = new DiffUtil.ItemCallback<MessageEntity>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull MessageEntity oldItem, @NonNull MessageEntity newItem) {
+            return oldItem.getMessageID() == newItem.getMessageID();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull MessageEntity oldItem, @NonNull MessageEntity newItem) {
+            return false;
+        }
+    };
+
+    static class messageViewHolder extends RecyclerView.ViewHolder{
         private TextView title;
         private TextView read_more;
         private TextView date;
@@ -35,9 +53,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.messageV
         }
      }
 
-    /*public MessageAdapter(ArrayList<MessageEntity> messageItemArrayList){
-        this.arrayListItems=messageItemArrayList;
-    }*/
 
     @NonNull
     @Override
@@ -49,21 +64,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.messageV
     @Override
     public void onBindViewHolder(@NonNull messageViewHolder holder, int position) {
 
-        MessageEntity currentItem = arrayListItems.get(position);
+        MessageEntity currentItem = getItem(position);
         holder.title.setText(currentItem.getTitle());
         holder.read_more.setText(currentItem.getDescription());
         holder.date.setText(currentItem.getDate());
         holder.time.setText(currentItem.getTime());
     }
 
-    @Override
-    public int getItemCount() {
-        return arrayListItems.size();
+    public MessageEntity getMessageAt(int position){
+         return getItem(position);
     }
 
-    public void setArrayListItems(List<MessageEntity> messageEntityList){
-        this.arrayListItems = messageEntityList;
-        notifyDataSetChanged();
+    public interface OnItemClickListener{
+        void onItemClick(MessageEntity messageEntity);
     }
 
 }

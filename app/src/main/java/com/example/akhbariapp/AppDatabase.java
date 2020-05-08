@@ -74,7 +74,7 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            messageDAO.insert(new MessageEntity("Hello world 1","this example 1","2020-10-15","23:22"));
+            messageDAO.insert(new MessageEntity("Hello world 1","this example 1","2007-05-16","12:00"));
             messageDAO.insert(new MessageEntity("Hello world 2","this example 2","2020-10-16","20:22"));
             messageDAO.insert(new MessageEntity("Hello world 3","this example 3","2020-10-17","19:22"));
             messageDAO.insert(new MessageEntity("Hello world 4","this example 4","2020-10-18"," 5:22"));

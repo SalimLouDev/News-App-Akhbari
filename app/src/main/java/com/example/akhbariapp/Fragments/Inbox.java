@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,6 @@ import java.util.Objects;
 public class Inbox extends Fragment {
 
     private Animation animation;
-    private MessagesViewModel messagesViewModel;
     private FloatingActionButton fab;
     public Inbox(){}
     public Inbox(Animation animation){
@@ -55,14 +55,21 @@ public class Inbox extends Fragment {
         recyclerView.setAdapter(messageAdapter);
 
 
+        MessagesViewModel messagesViewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
+        messagesViewModel.getAllMessages().observe(getViewLifecycleOwner(), messageAdapter::submitList);
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-
-
-        messagesViewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
-        messagesViewModel.getAllMessages().observe(getViewLifecycleOwner(), messageAdapter::setArrayListItems);
-
-
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                messagesViewModel.delete(messageAdapter.getMessageAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getActivity(), "Message deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
 
 
 
