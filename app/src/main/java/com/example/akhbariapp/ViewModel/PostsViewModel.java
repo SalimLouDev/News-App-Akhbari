@@ -26,4 +26,16 @@ public class PostsViewModel extends AndroidViewModel {
     public LiveData<List<PostsEntity>> gettodayposts(long today){
         return postsRepository.gettodayposts(today);
     }
+
+    public LiveData<List<PostsEntity>> get_week_posts(long f_day,long s_day){
+        return postsRepository.get_week_posts(f_day,s_day);
+    }
+
+    public LiveData<List<PostsEntity>> get_posts_by_type(String post_t){
+        return postsRepository.get_posts_by_type(post_t);
+    }
+
+    public LiveData<List<PostsEntity>> get_posts_by_name(String t,long d){
+        return postsRepository.get_posts_by_name(t,d);
+    }
 }

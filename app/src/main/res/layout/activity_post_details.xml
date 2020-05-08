@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F084B"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#0F084B">
+
+        <TextView
+            android:id="@+id/post_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_here"
+            android:layout_gravity="center"
+            android:layout_marginTop="28dp"
+            android:textColor="@android:color/white"
+            android:textSize="35sp"
+            android:fontFamily="@font/roboto_mono"/>
+
+        <ImageView
+            android:id="@+id/post_details_image"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_launcher_background"/>
+
+        <TextView
+            android:id="@+id/post_details_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="11dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/roboto_thin"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

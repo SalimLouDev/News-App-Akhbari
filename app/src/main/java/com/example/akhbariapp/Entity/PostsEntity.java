@@ -4,9 +4,12 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+
+import java.io.Serializable;
 
 @Entity(tableName = "Post")
-public class PostsEntity {
+public class PostsEntity implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -14,15 +17,17 @@ public class PostsEntity {
     private String title,description,post_type,city;
 
     private LocalDate post_date;
-
+    private LocalDateTime post_time;
     private String image_uri;
 
-    public PostsEntity(String title,String description,String city,String post_type,LocalDate post_date,String image_uri) {
+    public PostsEntity(String title, String description, String city, String post_type, LocalDate post_date, LocalDateTime post_time,
+                       String image_uri) {
         this.title=title;
         this.description=description;
         this.city=city;
         this.post_type = post_type;
         this.post_date=post_date;
+        this.post_time = post_time;
         this.image_uri = image_uri;
     }
 
@@ -78,5 +83,13 @@ public class PostsEntity {
 
     public void setImage_uri(String image_uri) {
         this.image_uri = image_uri;
+    }
+
+    public LocalDateTime getPost_time() {
+        return post_time;
+    }
+
+    public void setPost_time(LocalDateTime post_time) {
+        this.post_time = post_time;
     }
 }

@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -27,6 +28,7 @@ import com.example.akhbariapp.Fragments.ThisWeek;
 import com.example.akhbariapp.Fragments.Today;
 import com.example.akhbariapp.Fragments.Transport;
 import com.example.akhbariapp.R;
+import com.example.akhbariapp.RecyclerViewAdapters.PostRecyclerViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -35,7 +37,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout drawerLayout;
     private SharedPreferences admin;
     private SharedPreferences.Editor editor;
-
+    private PostRecyclerViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         BottomNavigationView bottomNavigationView = findViewById(R.id.admin_bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
+        //adapter = new PostRecyclerViewAdapter(this,);
     }
 
     @Override
@@ -88,11 +91,11 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.admin_add_post:
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
-                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new AdminPost(animation)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new AdminPost(animation)).addToBackStack(null).commit();
                 break;
             case R.id.admin_nav_msg:
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
-                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Inbox(animation)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Inbox(animation)).addToBackStack(null).commit();
                 break;
         }
 
@@ -103,6 +106,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_menu,menu);
+
         return true;
     }
 

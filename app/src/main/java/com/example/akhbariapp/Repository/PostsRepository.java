@@ -9,7 +9,6 @@ import com.example.akhbariapp.AppDatabase;
 import com.example.akhbariapp.Dao.PostDao;
 import com.example.akhbariapp.Entity.PostsEntity;
 
-import java.util.Date;
 import java.util.List;
 
 public class PostsRepository {
@@ -27,6 +26,18 @@ public class PostsRepository {
 
     public LiveData<List<PostsEntity>> gettodayposts(long today){
        return postDao.gettodayposts(today);
+    }
+
+    public LiveData<List<PostsEntity>> get_week_posts(long f_day,long s_day){
+        return postDao.get_week_posts(f_day,s_day);
+    }
+
+    public LiveData<List<PostsEntity>> get_posts_by_type(String post_t){
+        return postDao.get_posts_by_type(post_t);
+    }
+
+    public LiveData<List<PostsEntity>> get_posts_by_name(String t,long d){
+       return postDao.get_posts_by_name(t,d);
     }
 
     static class InsertPost extends AsyncTask<PostsEntity,Void,Void>{

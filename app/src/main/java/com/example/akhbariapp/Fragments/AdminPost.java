@@ -28,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 
 import java.util.Objects;
 
@@ -127,6 +128,7 @@ public class AdminPost extends Fragment {
 
     private void add_post(){
         LocalDate post_date = LocalDate.now();
+        LocalDateTime post_time = LocalDateTime.now();
         String title = Objects.requireNonNull(post_title.getEditText()).getText().toString().trim();
         String desc = Objects.requireNonNull(post_desc.getEditText()).getText().toString().trim();
         String _city = city.getEditableText().toString().trim();
@@ -138,9 +140,9 @@ public class AdminPost extends Fragment {
             return;
         }
         if(_post_type.equalsIgnoreCase("Sport")){
-            postsViewModel.add_post(new PostsEntity(title, desc,"", _post_type,post_date,image_uri));
+            postsViewModel.add_post(new PostsEntity(title, desc,"", _post_type,post_date,post_time,image_uri));
         }else {
-            postsViewModel.add_post(new PostsEntity(title, desc, _city, _post_type,post_date,image_uri));
+            postsViewModel.add_post(new PostsEntity(title, desc, _city, _post_type,post_date,post_time,image_uri));
         }
     }
 }
