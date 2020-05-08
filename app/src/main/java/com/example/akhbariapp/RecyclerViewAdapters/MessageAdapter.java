@@ -11,14 +11,11 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.akhbariapp.Entity.MessageEntity;
-import com.example.akhbariapp.MessageItem;
 import com.example.akhbariapp.R;
 
-import java.util.ArrayList;
-import java.util.List;
+public class MessageAdapter extends ListAdapter<MessageEntity, MessageAdapter.messageViewHolder> {
 
-public class MessageAdapter extends ListAdapter<MessageEntity,MessageAdapter.messageViewHolder> {
-
+    public static OnItemClickListener listener;
 
     public MessageAdapter() {
         super(DIFF_CALLBACK);
@@ -37,27 +34,35 @@ public class MessageAdapter extends ListAdapter<MessageEntity,MessageAdapter.mes
         }
     };
 
-    static class messageViewHolder extends RecyclerView.ViewHolder{
+    class messageViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private TextView read_more;
         private TextView date;
-        private  TextView time;
+        private TextView time;
 
 
-         messageViewHolder(@NonNull View itemView) {
+        messageViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.message_title);
             read_more = itemView.findViewById(R.id.message_read_more);
             date = itemView.findViewById(R.id.message_date);
-             time = itemView.findViewById(R.id.message_time);
+            time = itemView.findViewById(R.id.message_time);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(getItem(getAdapterPosition()));
+                    }
+                }
+            });
         }
-     }
+    }
 
 
     @NonNull
     @Override
     public messageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
         return new messageViewHolder(v);
     }
 
@@ -71,12 +76,16 @@ public class MessageAdapter extends ListAdapter<MessageEntity,MessageAdapter.mes
         holder.time.setText(currentItem.getTime());
     }
 
-    public MessageEntity getMessageAt(int position){
-         return getItem(position);
+    public MessageEntity getMessageAt(int position) {
+        return getItem(position);
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(MessageEntity messageEntity);
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+
+        MessageAdapter.listener = listener;
+    }
 }

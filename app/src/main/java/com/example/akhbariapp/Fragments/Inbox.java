@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,13 +19,10 @@ import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.Activities.HomeActivity;
 import com.example.akhbariapp.Entity.MessageEntity;
 import com.example.akhbariapp.RecyclerViewAdapters.MessageAdapter;
-import com.example.akhbariapp.MessageItem;
 import com.example.akhbariapp.R;
 import com.example.akhbariapp.ViewModel.MessagesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Inbox extends Fragment {
@@ -71,7 +67,7 @@ public class Inbox extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-
+        messageAdapter.setOnItemClickListener(messageEntity -> Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new ShowMessage(messageEntity.getTitle(),messageEntity.getDescription(),messageEntity.getDate(),messageEntity.getTime())).commit());
 
         if(Objects.equals(user_state, "normal_user")){
             HomeActivity homeActivity = (HomeActivity) getActivity();
