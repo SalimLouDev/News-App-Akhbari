@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
+import java.io.Serializable;
+
 @Entity(tableName = "Post")
-public class PostsEntity {
+public class PostsEntity implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;

@@ -87,19 +87,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
-        Fragment fragment=null;
+
         switch (item.getItemId()){
 
             case R.id.admin_nav_home:
-                fragment = new Today();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Today()).commit();
                 break;
             case R.id.admin_nav_msg:
-                fragment = new Inbox();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Inbox()).addToBackStack(null).commit();
                 break;
 
         }
-        assert fragment != null;
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+
         return true;
     };
     @Override

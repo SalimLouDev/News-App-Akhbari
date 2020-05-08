@@ -65,7 +65,7 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         BottomNavigationView bottomNavigationView = findViewById(R.id.admin_bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        adapter = new PostRecyclerViewAdapter(this);
+        //adapter = new PostRecyclerViewAdapter(this,);
     }
 
     @Override
@@ -91,11 +91,11 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.admin_add_post:
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
-                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new AdminPost(animation)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new AdminPost(animation)).addToBackStack(null).commit();
                 break;
             case R.id.admin_nav_msg:
                 animation = AnimationUtils.loadAnimation(this,R.anim.bounce_animation);
-                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Inbox(animation)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container,new Inbox(animation)).addToBackStack(null).commit();
                 break;
         }
 
@@ -107,21 +107,6 @@ public class AdminHomeActivity extends AppCompatActivity implements NavigationVi
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_menu,menu);
 
-//        MenuItem search_item = menu.findItem(R.id.settings);
-//        SearchView searchView = (SearchView) search_item.getActionView();
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
         return true;
     }
 

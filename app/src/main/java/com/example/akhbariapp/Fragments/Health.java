@@ -41,10 +41,10 @@ public class Health extends Fragment {
         PostsViewModel postsViewModel = new ViewModelProvider(this).get(PostsViewModel.class);
         RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
         post_list.setLayoutManager(new LinearLayoutManager(getContext()));
-        PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext());
-        post_list.setAdapter(adapter);
+        //PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext());
+        //post_list.setAdapter(adapter);
 
-        postsViewModel.get_posts_by_type(getString(R.string.health)).observe(getViewLifecycleOwner(), postsEntities -> adapter.setList(postsEntities));
+        //postsViewModel.get_posts_by_type(getString(R.string.health)).observe(getViewLifecycleOwner(), postsEntities -> adapter.setList(postsEntities));
         return root;
     }
 }

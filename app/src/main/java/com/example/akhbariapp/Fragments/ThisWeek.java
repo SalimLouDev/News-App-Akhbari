@@ -46,15 +46,15 @@ public class ThisWeek extends Fragment {
         PostsViewModel postsViewModel = new ViewModelProvider(this).get(PostsViewModel.class);
         RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
         post_list.setLayoutManager(new LinearLayoutManager(getContext()));
-        PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext());
-        post_list.setAdapter(adapter);
+        //PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext());
+        //post_list.setAdapter(adapter);
 
         Calendar c = Calendar.getInstance();
         DateTime d = new DateTime(c.get(Calendar.YEAR),c.get(Calendar.MONTH)+1,c.get(Calendar.DAY_OF_MONTH),0,0);
         long l = d.getMillis();
         DateTime d7 = d.dayOfMonth().addToCopy(7);
         long l7 = d7.getMillis();
-        postsViewModel.get_week_posts(l,l7).observe(getViewLifecycleOwner(), postsEntities -> adapter.setList(postsEntities));
+        //postsViewModel.get_week_posts(l,l7).observe(getViewLifecycleOwner(), postsEntities -> adapter.setList(postsEntities));
 
         
         return root;
