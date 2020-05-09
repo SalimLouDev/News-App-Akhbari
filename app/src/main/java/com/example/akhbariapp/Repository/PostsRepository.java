@@ -36,8 +36,8 @@ public class PostsRepository {
         return postDao.get_posts_by_type(post_t);
     }
 
-    public LiveData<List<PostsEntity>> get_posts_by_name(String t,long d){
-       return postDao.get_posts_by_name(t,d);
+    public LiveData<List<PostsEntity>> get_past_posts(long d){
+        return postDao.get_past_posts(d);
     }
 
     static class InsertPost extends AsyncTask<PostsEntity,Void,Void>{

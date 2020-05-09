@@ -81,8 +81,7 @@ public class Today extends Fragment implements PostRecyclerViewAdapter.OnpostCli
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                LocalDate today_date = LocalDate.now();
-                postsViewModel.get_posts_by_name(newText,today_date.toDate().getTime()).observe(getViewLifecycleOwner(), postsEntities -> adapter.setList(postsEntities));
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });

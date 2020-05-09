@@ -29,4 +29,8 @@ public class UserViewModel extends AndroidViewModel {
     public EntityUser check(String f,String l,String nat) throws ExecutionException, InterruptedException {
         return userRepository.check(f,l,nat);
     }
+
+    public EntityUser forgot_password(int id) throws ExecutionException, InterruptedException {
+        return userRepository.forgot_password(id);
+    }
 }

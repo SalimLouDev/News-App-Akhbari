@@ -24,6 +24,6 @@ public interface PostDao {
     @Query("SELECT * FROM Post WHERE post_type Like :post_t")
     LiveData<List<PostsEntity>>get_posts_by_type(String post_t);
 
-    @Query("SELECT * FROM Post WHERE title LIKE :t AND post_date=:d")
-    LiveData<List<PostsEntity>>get_posts_by_name(String t,long d);
+    @Query("SELECT * FROM Post WHERE post_date < :d")
+    LiveData<List<PostsEntity>>get_past_posts(long d);
 }

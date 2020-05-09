@@ -31,6 +31,10 @@ public class UserRepository {
         return new CheckAsyncTask(userDao).execute(f,l,nat).get();
     }
 
+    public EntityUser forgot_password(int id) throws ExecutionException, InterruptedException {
+        return new ForgotAsyncTask(userDao).execute(id).get();
+    }
+
     static class InsertAsyncTask extends AsyncTask<EntityUser,Void,Void>{
 
         private UserDao userDao;
@@ -63,13 +67,27 @@ public class UserRepository {
 
         private UserDao userDao;
 
-        public CheckAsyncTask(UserDao userDao) {
+        CheckAsyncTask(UserDao userDao) {
             this.userDao = userDao;
         }
 
         @Override
         protected EntityUser doInBackground(String... strings) {
             return userDao.check(strings[0],strings[1],strings[2]);
+        }
+    }
+
+    static class ForgotAsyncTask extends AsyncTask<Integer,Void,EntityUser>{
+
+        private UserDao userDao;
+
+        public ForgotAsyncTask(UserDao userDao) {
+            this.userDao = userDao;
+        }
+
+        @Override
+        protected EntityUser doInBackground(Integer... integers) {
+            return userDao.forgot_password(integers[0]);
         }
     }
 }

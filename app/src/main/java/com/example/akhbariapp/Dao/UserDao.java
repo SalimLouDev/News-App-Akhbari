@@ -17,4 +17,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM User WHERE FirstName=:f AND LastName=:l AND nationalID=:nat")
     EntityUser check(String f,String l,String nat);
+
+    @Query("SELECT * FROM User WHERE nationalID=:id")
+    EntityUser forgot_password(int id);
 }

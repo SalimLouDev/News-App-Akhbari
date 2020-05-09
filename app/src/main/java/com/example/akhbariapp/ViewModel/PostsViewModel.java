@@ -35,7 +35,7 @@ public class PostsViewModel extends AndroidViewModel {
         return postsRepository.get_posts_by_type(post_t);
     }
 
-    public LiveData<List<PostsEntity>> get_posts_by_name(String t,long d){
-        return postsRepository.get_posts_by_name(t,d);
+    public LiveData<List<PostsEntity>> get_past_posts(long d){
+        return postsRepository.get_past_posts(d);
     }
 }
