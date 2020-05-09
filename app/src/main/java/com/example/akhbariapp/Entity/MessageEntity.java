@@ -17,11 +17,14 @@ public class MessageEntity {
 
     private String time;
 
-    public MessageEntity(String title, String description, String date, String time) {
+    private String targeted_user;
+
+    public MessageEntity(String title, String description, String date, String time , String targeted_user) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.time = time;
+        this.targeted_user = targeted_user;
     }
 
     public void setMessageID(int messageID) {
@@ -46,5 +49,9 @@ public class MessageEntity {
 
     public String getTime() {
         return time;
+    }
+
+    public String getTargeted_user() {
+        return targeted_user;
     }
 }

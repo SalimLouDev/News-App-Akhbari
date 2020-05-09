@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/show_message_title"
+                android:layout_marginTop="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_mono"
+                android:text="@string/corona_diagnosis"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/show_message_read_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/read_more"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/show_message_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/show_message_time"
+                    android:fontFamily="@font/roboto_mono"
+                    android:text="@string/date"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/show_message_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_mono"
+                    android:text="@string/time"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
