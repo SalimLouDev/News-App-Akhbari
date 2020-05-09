@@ -74,13 +74,13 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            messageDAO.insert(new MessageEntity("Hello world 1","this example 1","2007-05-16","12:00"));
-            messageDAO.insert(new MessageEntity("Hello world 2","this example 2","2020-10-16","20:22"));
-            messageDAO.insert(new MessageEntity("Hello world 3","this example 3","2020-10-17","19:22"));
-            messageDAO.insert(new MessageEntity("Hello world 4","this example 4","2020-10-18"," 5:22"));
-            messageDAO.insert(new MessageEntity("Hello world 5","this example 5","2020-10-19"," 8:22"));
-            messageDAO.insert(new MessageEntity("Hello world 6","this example 6","2020-10-20","10:22"));
-            messageDAO.insert(new MessageEntity("Hello world 7","this example 7","2020-01-20","12:23"));
+            messageDAO.insert(new MessageEntity("Hello world 1","this example 1","2007-05-16","12:00","1000"));
+            messageDAO.insert(new MessageEntity("Hello world 2","this example 2","2020-10-16","20:22","2000"));
+            messageDAO.insert(new MessageEntity("Hello world 3","this example 3","2020-10-17","19:22","1000"));
+            messageDAO.insert(new MessageEntity("Hello world 4","this example 4","2020-10-18"," 5:22","2000"));
+            messageDAO.insert(new MessageEntity("Hello world 5","this example 5","2020-10-19"," 8:22","1000"));
+            messageDAO.insert(new MessageEntity("Hello world 6","this example 6","2020-10-20","10:22","2000"));
+            messageDAO.insert(new MessageEntity("Hello world 7","this example 7","2020-01-20","12:23","1000"));
             return null;
         }
     }

@@ -38,18 +38,20 @@ public class SignIn extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.login,container,false);
         SharedPreferences admin = Objects.requireNonNull(getActivity()).getSharedPreferences("Admin", MODE_PRIVATE);
-
+        national_id = root.findViewById(R.id.nat_edit_text_sign_in);
         if(!admin.getString("access","yes").equals("no")){
 
         if(!admin.getString("first_name","no").equals("no") && admin.getString("user_type","no").equals("admin")){
             Intent intent = new Intent(getActivity(), AdminHomeActivity.class);
             intent.putExtra("user","admin");
+            intent.putExtra("id", Objects.requireNonNull(national_id.getEditText()).getText().toString());
             startActivity(intent);
             Objects.requireNonNull(getActivity()).finish();
 
         }else if (!admin.getString("first_name","no").equals("no") && admin.getString("user_type","no").equals("normal_user")){
             Intent intent = new Intent(getActivity(), HomeActivity.class);
             intent.putExtra("user","normal_user");
+            intent.putExtra("national_id", Objects.requireNonNull(national_id.getEditText()).getText().toString());
             startActivity(intent);
             Objects.requireNonNull(getActivity()).finish();
          }
@@ -74,7 +76,7 @@ public class SignIn extends Fragment {
             fragmentTransaction.commit();
         });
 
-        national_id = root.findViewById(R.id.nat_edit_text_sign_in);
+
         password = root.findViewById(R.id.password_sign_in);
 
         userViewModel = new UserViewModel(Objects.requireNonNull(getActivity()).getApplication());
@@ -99,12 +101,14 @@ public class SignIn extends Fragment {
                if(user.getAdmin_code()==1234){
                        Intent intent = new Intent(getActivity(), AdminHomeActivity.class);
                        intent.putExtra("user","admin");
+                       intent.putExtra("id", Objects.requireNonNull(national_id.getEditText()).getText().toString());
                        startActivity(intent);
                        Objects.requireNonNull(getActivity()).finish();
 
                    }else if(user.getAdmin_code()==0){
                        Intent intent = new Intent(getActivity(), HomeActivity.class);
                        intent.putExtra("user","normal_user");
+                      intent.putExtra("id", Objects.requireNonNull(national_id.getEditText()).getText().toString());
                        startActivity(intent);
                        Objects.requireNonNull(getActivity()).finish();
                    }

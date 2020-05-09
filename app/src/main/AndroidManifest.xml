@@ -23,6 +23,9 @@
         </activity>
         <activity android:name=".Activities.AdminHomeActivity" />
         <activity android:name=".Activities.ContactUs" />
+        <activity android:name=".Activities.PostDetailsActivity" />
+        <activity android:name=".Activities.ShowMessage" />
+
 
         <meta-data
             android:name="preloaded_fonts"

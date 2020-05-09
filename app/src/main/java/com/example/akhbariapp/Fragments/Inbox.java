@@ -1,5 +1,6 @@
 package com.example.akhbariapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.akhbariapp.Activities.AdminHomeActivity;
 import com.example.akhbariapp.Activities.HomeActivity;
+import com.example.akhbariapp.Activities.ShowMessage;
 import com.example.akhbariapp.Entity.MessageEntity;
 import com.example.akhbariapp.RecyclerViewAdapters.MessageAdapter;
 import com.example.akhbariapp.R;
 import com.example.akhbariapp.ViewModel.MessagesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Inbox extends Fragment {
@@ -42,6 +46,7 @@ public class Inbox extends Fragment {
         String user_state = Objects.requireNonNull(getActivity()).getIntent().getStringExtra("user");
         fab = root.findViewById(R.id.floating_action_button_for_mail_interface);
 
+        List<MessageEntity> filteredMessages = new ArrayList<>();
         RecyclerView recyclerView = root.findViewById(R.id.message_recycle_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -50,9 +55,20 @@ public class Inbox extends Fragment {
         MessageAdapter messageAdapter = new MessageAdapter();
         recyclerView.setAdapter(messageAdapter);
 
+        Intent intent1 = getActivity().getIntent();
+        String national_id = intent1.getStringExtra("id");
 
         MessagesViewModel messagesViewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
-        messagesViewModel.getAllMessages().observe(getViewLifecycleOwner(), messageAdapter::submitList);
+        messagesViewModel.getAllMessages().observe(getViewLifecycleOwner(), messageEntities -> {
+
+            for (MessageEntity messageEntity: messageEntities) {
+                assert national_id != null;
+                if (national_id.equals(messageEntity.getTargeted_user())){
+                    filteredMessages.add(messageEntity);}
+            }
+            messageAdapter.setMessagesFor(filteredMessages);
+        });
+
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -67,7 +83,16 @@ public class Inbox extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-        messageAdapter.setOnItemClickListener(messageEntity -> Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.admin_fragment_container, new ShowMessage(messageEntity.getTitle(),messageEntity.getDescription(),messageEntity.getDate(),messageEntity.getTime())).commit());
+        messageAdapter.setOnItemClickListener(messageEntity -> {
+
+            Intent intent = new Intent(getActivity(),ShowMessage.class);
+            intent.putExtra("title", messageEntity.getTitle());
+            intent.putExtra("description", messageEntity.getDescription());
+            intent.putExtra("date", messageEntity.getDate());
+            intent.putExtra("time", messageEntity.getTime());
+            startActivity(intent);
+        });
+
 
         if(Objects.equals(user_state, "normal_user")){
             HomeActivity homeActivity = (HomeActivity) getActivity();
@@ -97,9 +122,6 @@ public class Inbox extends Fragment {
                 }
             });
         }
-
-
-
 
         return root;
     }

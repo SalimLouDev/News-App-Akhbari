@@ -87,7 +87,7 @@ public class AdminPostMessage extends Fragment
             Toast.makeText(getActivity(), "Title is empty.", Toast.LENGTH_SHORT).show();
         }else {
             MessagesViewModel messagesViewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
-            messagesViewModel.insert(new MessageEntity(subject,content,LocalDate.now().toString(),LocalTime.now().toString()));
+            messagesViewModel.insert(new MessageEntity(subject,content,LocalDate.now().toString(),LocalTime.now().toString(),to));
             Toast.makeText(getActivity(), "Mail sent", Toast.LENGTH_SHORT).show();
             this.to.setText("");
             this.content.setText("");

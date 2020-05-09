@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.akhbariapp.Entity.MessageEntity;
 import com.example.akhbariapp.R;
 
+import java.util.List;
+
+
 public class MessageAdapter extends ListAdapter<MessageEntity, MessageAdapter.messageViewHolder> {
 
     public static OnItemClickListener listener;
-
     public MessageAdapter() {
         super(DIFF_CALLBACK);
 
@@ -34,6 +36,8 @@ public class MessageAdapter extends ListAdapter<MessageEntity, MessageAdapter.me
         }
     };
 
+
+
     class messageViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private TextView read_more;
@@ -47,12 +51,9 @@ public class MessageAdapter extends ListAdapter<MessageEntity, MessageAdapter.me
             read_more = itemView.findViewById(R.id.message_read_more);
             date = itemView.findViewById(R.id.message_date);
             time = itemView.findViewById(R.id.message_time);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(getItem(getAdapterPosition()));
-                    }
+            itemView.setOnClickListener(v -> {
+                if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(getItem(getAdapterPosition()));
                 }
             });
         }
@@ -78,6 +79,10 @@ public class MessageAdapter extends ListAdapter<MessageEntity, MessageAdapter.me
 
     public MessageEntity getMessageAt(int position) {
         return getItem(position);
+    }
+
+    public void setMessagesFor(List<MessageEntity> messageEntityList){
+        submitList(messageEntityList);
     }
 
     public interface OnItemClickListener {
