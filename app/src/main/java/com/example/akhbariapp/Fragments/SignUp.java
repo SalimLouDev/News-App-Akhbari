@@ -128,6 +128,7 @@ public class SignUp extends Fragment {
                     fields_save.apply();
                     Intent intent = new Intent(getActivity(), AdminHomeActivity.class);
                     intent.putExtra("user","admin");
+                    intent.putExtra("id", Objects.requireNonNull(national_id.getEditText()).getText().toString());
                     startActivity(intent);
                     Objects.requireNonNull(getActivity()).finish();
                 }else {
@@ -143,6 +144,7 @@ public class SignUp extends Fragment {
 
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 intent.putExtra("user","normal_user");
+                intent.putExtra("id", Objects.requireNonNull(national_id.getEditText()).getText().toString());
                 startActivity(intent);
                 Objects.requireNonNull(getActivity()).finish();
             }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -98,6 +99,7 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
 
         private ImageView post_image;
         private TextView post_title,read_more,post_date,post_time;
+        private CardView post_view;
         private PostRecyclerViewAdapter.OnpostClickListner listner_2;
         ViewHolder(@NonNull View itemView,PostRecyclerViewAdapter.OnpostClickListner listner_2) {
             super(itemView);
@@ -106,11 +108,11 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
             read_more = itemView.findViewById(R.id.post_read_more);
             post_date = itemView.findViewById(R.id.post_date);
             post_time = itemView.findViewById(R.id.post_time);
+            post_view = itemView.findViewById(R.id.card_view);
             this.listner_2 = listner_2;
 
-            //itemView.setOnClickListener(v -> listner.onclick(posts.get(getAdapterPosition())));
-
-            read_more.setOnClickListener(v-> listner_2.onclick(posts.get(getAdapterPosition())));
+            read_more.setOnClickListener(v ->listner_2.onclick(posts.get(getAdapterPosition())));
+            post_view.setOnClickListener(v ->listner_2.onclick(posts.get(getAdapterPosition())));
         }
     }
 
