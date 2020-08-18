@@ -1,6 +1,6 @@
 # AkhbariApp
 
-This app is for messaging and posting news created with simple yet adictive design and unique user experience 
+This app is for messaging and posting news created with simple yet addictive design and unique user experience 
 
 <p align="center">
 <img width='400' src="Login.jpg">
