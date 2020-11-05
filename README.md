@@ -3,7 +3,7 @@
 This app is for messaging and posting news created with simple yet addictive design and unique user experience 
 
 <p align="center">
-<img  src="Login.png">
+<img  src="Login.jpg">
 </p>
 <p align="center">
 <img src="postCreation.jpg">
@@ -15,7 +15,7 @@ This app is for messaging and posting news created with simple yet addictive des
 <img  src="postlistview.png">
 </p>
 <p align="center">
-<img  src="navigationDrawer.png">
+<img  src="navigationDrawer.jpg">
 </p>
 <p align="center">
 <img  src="PostView.png">
