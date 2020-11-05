@@ -50,7 +50,7 @@ public abstract class AppDatabase extends RoomDatabase {
             Executors.newSingleThreadScheduledExecutor().execute(() -> {
 
                 NationalCardsDao dao = instance.nationalCardsDao();
-                NationalCardsEntity nationalCardsEntity = new NationalCardsEntity("OUCIF","MOHAMED","ORAN",1000);
+                NationalCardsEntity nationalCardsEntity = new NationalCardsEntity("OUCIF","MOHAMED","ALGER",1000);
                 dao.insert(nationalCardsEntity);
                 NationalCardsEntity nationalCardsEntity1 = new NationalCardsEntity("SALIM","LOUCIF","ORAN",2000);
                 dao.insert(nationalCardsEntity1);
@@ -80,6 +80,7 @@ public abstract class AppDatabase extends RoomDatabase {
             messageDAO.insert(new MessageEntity("Hello world 4","this example 4","2020-10-18"," 5:22","2000"));
             messageDAO.insert(new MessageEntity("Hello world 5","this example 5","2020-10-19"," 8:22","1000"));
             messageDAO.insert(new MessageEntity("Hello world 6","this example 6","2020-10-20","10:22","2000"));
+            messageDAO.insert(new MessageEntity("Hello world 8","this example 8","2020-10-20","10:22","4000"));
             messageDAO.insert(new MessageEntity("Hello world 7","this example 7","2020-01-20","12:23","1000"));
             return null;
         }

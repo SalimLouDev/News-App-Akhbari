@@ -23,7 +23,7 @@ import com.example.akhbariapp.ViewModel.PostsViewModel;
 import java.util.List;
 import java.util.Objects;
 
-public class Transport extends Fragment {
+public class Transport extends Fragment implements PostRecyclerViewAdapter.OnpostClickListner{
 
     @Nullable
     @Override
@@ -44,10 +44,15 @@ public class Transport extends Fragment {
         PostsViewModel postsViewModel = new ViewModelProvider(this).get(PostsViewModel.class);
         RecyclerView post_list = root.findViewById(R.id.post_recycler_view);
         post_list.setLayoutManager(new LinearLayoutManager(getContext()));
-        //PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext());
-        //post_list.setAdapter(adapter);
+        PostRecyclerViewAdapter adapter = new PostRecyclerViewAdapter(getContext(), this);
+        post_list.setAdapter(adapter);
 
-        //postsViewModel.get_posts_by_type(getString(R.string.transport)).observe(getViewLifecycleOwner(), postsEntities -> adapter.setList(postsEntities));
+        postsViewModel.get_posts_by_type(getString(R.string.transport)).observe(getViewLifecycleOwner(), adapter::setList);
         return root;
+    }
+
+    @Override
+    public void onclick(PostsEntity postsEntity) {
+
     }
 }
