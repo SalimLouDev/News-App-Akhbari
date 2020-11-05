@@ -18,8 +18,8 @@ This app is for messaging and posting news created with simple yet addictive des
 <img  src="navigationDrawer.jpg">
 </p>
 <p align="center">
-<img  src="PostView.png">
+<img  src="PostView.jpg">
 </p>
 <p align="center">
-<img  src="contact.png">
+<img  src="contact.jpg">
 </p>
